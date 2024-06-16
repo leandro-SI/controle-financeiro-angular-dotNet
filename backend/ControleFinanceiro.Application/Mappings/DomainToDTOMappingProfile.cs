@@ -14,6 +14,7 @@ namespace ControleFinanceiro.Application.Mappings
         public DomainToDTOMappingProfile()
         {
             CreateMap<Categoria, CategoriaDTO>().ReverseMap();
+            CreateMap<Tipo, TipoDTO>().ReverseMap();
         }
     }
 }
