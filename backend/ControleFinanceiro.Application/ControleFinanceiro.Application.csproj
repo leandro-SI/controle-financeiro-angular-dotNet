@@ -7,7 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ControleFinanceiro.Infra.IoC\ControleFinanceiro.Infra.IoC.csproj" />
+    <ProjectReference Include="..\ControleFinanceiro.Infra.Data\ControleFinanceiro.Infra.Data.csproj" />
   </ItemGroup>
 
 </Project>
