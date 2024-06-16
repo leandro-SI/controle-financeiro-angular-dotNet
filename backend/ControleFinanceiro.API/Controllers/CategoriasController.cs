@@ -49,10 +49,18 @@ namespace ControleFinanceiro.API.Controllers
             return Ok();
         }
 
-        [HttpPut("update")]
-        public async Task<IActionResult> Update([FromBody] CategoriaDTO categoriaDTO)
+        [HttpPut("update/{id}")]
+        public async Task<IActionResult> Update(long id, [FromBody] CategoriaDTO categoriaDTO)
         {
             if (categoriaDTO == null)
+                return BadRequest("Invalid Data.");
+
+            var categoria = await _categoriasService.GetById(id);
+
+            if (categoria == null)
+                return NotFound();
+
+            if (id != categoriaDTO.Id)
                 return BadRequest("Invalid Data.");
 
             await _categoriasService.Update(categoriaDTO);
