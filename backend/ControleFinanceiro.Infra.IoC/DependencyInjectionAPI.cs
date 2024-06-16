@@ -1,5 +1,10 @@
-﻿using ControleFinanceiro.Domain.Entities;
+﻿using ControleFinanceiro.Application.Interfaces;
+using ControleFinanceiro.Application.Mappings;
+using ControleFinanceiro.Application.Services;
+using ControleFinanceiro.Domain.Entities;
+using ControleFinanceiro.Domain.Interfaces;
 using ControleFinanceiro.Infra.Data.Context;
+using ControleFinanceiro.Infra.Data.Repositories;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -23,6 +28,10 @@ namespace ControleFinanceiro.Infra.IoC
 
             services.AddIdentity<Usuario, Funcao>().AddEntityFrameworkStores<ApplicationDbContext>();
 
+            services.AddScoped<ICategoriaRepository, CategoriaRepository>();
+            services.AddScoped<ICategoriaService, CategoriaService>();
+
+            services.AddAutoMapper(typeof(DomainToDTOMappingProfile));
 
             return services;
         }

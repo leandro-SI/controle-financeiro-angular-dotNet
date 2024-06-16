@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="12.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\ControleFinanceiro.Infra.Data\ControleFinanceiro.Infra.Data.csproj" />
   </ItemGroup>
 
