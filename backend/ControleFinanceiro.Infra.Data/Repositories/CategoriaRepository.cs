@@ -21,7 +21,7 @@ namespace ControleFinanceiro.Infra.Data.Repositories
 
         public async Task<IEnumerable<Categoria>> GetAllAsync()
         {
-            return await _context.Categorias.ToListAsync();
+            return await _context.Categorias.Include(c => c.Tipo).ToListAsync();
         }
 
         public async Task<Categoria> GetByIdAsync(long id)

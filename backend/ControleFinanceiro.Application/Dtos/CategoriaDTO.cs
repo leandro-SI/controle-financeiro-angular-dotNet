@@ -9,8 +9,7 @@ namespace ControleFinanceiro.Application.Dtos
         public string Nome { get; set; }
         public string Icone { get; set; }
         public long TipoId { get; set; }
-        [JsonIgnore]
-        public Tipo Tipo { get; set; }
+        public TipoDTO Tipo { get; set; }
 
     }
 }

@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Categoria } from 'src/app/models/Categoria';
+import { environment } from 'src/environments/environment';
 
 const httpOptions = {
   headers: new HttpHeaders ({
@@ -14,30 +15,25 @@ const httpOptions = {
 })
 export class CategoriasService {
 
-  url:string = 'api/Categorias'
-
   constructor(private http: HttpClient) { }
 
   getAll() : Observable<Categoria[]> {
-    return this.http.get<Categoria[]>(this.url + '/get-all')
+    return this.http.get<Categoria[]>(`${environment.urlApi}Categorias/get-all`)
   }
 
   getById(id: number) : Observable<Categoria> {
-    const apiUrl = `${this.url}/get-by-id/${id}`;
-    return this.http.get<Categoria>(apiUrl);
+    return this.http.get<Categoria>(`${environment.urlApi}Categorias/get-by-id/${id}`);
   }
 
   create(categoria: Categoria) : Observable<any> {
-    return this.http.post<Categoria>(this.url + '/create', categoria, httpOptions)
+    return this.http.post<Categoria>(`${environment.urlApi}Categorias/create`, categoria, httpOptions)
   }
 
   update(id: number, categoria: Categoria) : Observable<any> {
-    const apiUrl = `${this.url}/update/${id}`;
-    return this.http.put<Categoria>(apiUrl, categoria, httpOptions);
+    return this.http.put<Categoria>(`${environment.urlApi}Categorias/update/${id}`, categoria, httpOptions);
   }
 
   delete(id: number) : Observable<any> {
-    const apiUrl = `${this.url}/delete/${id}`;
-    return this.http.delete<Number>(apiUrl, httpOptions);
+    return this.http.delete<Number>(`${environment.urlApi}Categorias/delete/${id}`, httpOptions);
   }
 }
