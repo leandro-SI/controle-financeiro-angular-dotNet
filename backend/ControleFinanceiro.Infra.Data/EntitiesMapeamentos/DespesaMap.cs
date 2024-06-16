@@ -42,7 +42,7 @@ namespace ControleFinanceiro.Infra.Data.EntitiesMapeamentos
                 .HasForeignKey(d => d.UsuarioId)
                 .IsRequired();
 
-            builder.ToTable("Despesas")
+            builder.ToTable("Despesas");
         }
     }
 }

@@ -13,7 +13,7 @@ namespace ControleFinanceiro.Infra.Data.EntitiesMapeamentos
                 .IsRequired()
                 .HasMaxLength(50);
 
-            builder.HasIndex().IsUnique();
+            builder.HasIndex(c => c.Nome).IsUnique();
 
             builder.Property(c => c.Bandeira)
                 .IsRequired()
