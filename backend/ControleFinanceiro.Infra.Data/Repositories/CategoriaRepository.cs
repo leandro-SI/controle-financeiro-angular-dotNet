@@ -2,11 +2,6 @@
 using ControleFinanceiro.Domain.Interfaces;
 using ControleFinanceiro.Infra.Data.Context;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ControleFinanceiro.Infra.Data.Repositories
 {
@@ -51,5 +46,10 @@ namespace ControleFinanceiro.Infra.Data.Repositories
             return categoria;
         }
 
+        public async Task<IEnumerable<Categoria>> Filtrar(string nome)
+        {
+            return await _context.Categorias.Include(c => c.Tipo)
+                .Where(c => c.Nome.ToLower().Contains(nome.ToLower())).ToListAsync();
+        }
     }
 }

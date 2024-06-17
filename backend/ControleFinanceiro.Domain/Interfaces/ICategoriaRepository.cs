@@ -9,5 +9,6 @@ namespace ControleFinanceiro.Domain.Interfaces
         Task<Categoria> CreateAsync(Categoria categoria);
         Task<Categoria> UpdateAsync(Categoria categoria);
         Task<Categoria> DeleteAsync(Categoria categoria);
+        Task<IEnumerable<Categoria>> Filtrar(string nome);
     }
 }

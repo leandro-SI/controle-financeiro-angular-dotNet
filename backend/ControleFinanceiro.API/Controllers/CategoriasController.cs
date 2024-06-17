@@ -75,5 +75,16 @@ namespace ControleFinanceiro.API.Controllers
 
             return Ok();
         }
+
+        [HttpGet("filtrar/{nome}")]
+        public async Task<IActionResult> Filtrar(string nome)
+        {
+            var categorias = await _categoriasService.Filtrar(nome);
+
+            if (categorias == null)
+                return NotFound();
+
+            return Ok(categorias);
+        }
     }
 }

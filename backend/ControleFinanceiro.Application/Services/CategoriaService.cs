@@ -52,5 +52,13 @@ namespace ControleFinanceiro.Application.Services
             await _categoriaRepository.DeleteAsync(entity);
         }
 
+        public async Task<IEnumerable<CategoriaDTO>> Filtrar(string nome)
+        {
+            var categorias = await _categoriaRepository.Filtrar(nome);
+
+            var filterResult = _mapper.Map<IEnumerable<CategoriaDTO>>(categorias).ToList();
+
+            return filterResult;
+        }
     }
 }
