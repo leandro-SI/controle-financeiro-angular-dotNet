@@ -63,7 +63,7 @@ namespace ControleFinanceiro.API.Controllers
             return Ok();
         }
 
-        [HttpDelete("remove/{id}")]
+        [HttpDelete("delete/{id}")]
         public async Task<IActionResult> Delete(long id)
         {
             var categoriaDto = await _categoriasService.GetById(id);
