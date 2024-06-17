@@ -12,7 +12,7 @@ export class TiposService {
   constructor(private http: HttpClient) { }
 
   GetAll() : Observable<Tipo[]> {
-    return this.http.get<Tipo[]>(`${environment.urlApi}Categorias/get-all`);
+    return this.http.get<Tipo[]>(`${environment.urlApi}Tipos/get-all`);
   }
 
 }
