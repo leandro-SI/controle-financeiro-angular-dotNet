@@ -26,13 +26,15 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 //componentes
 import { ListarCategoriasComponent } from './components/Categoria/listar-categorias/listar-categorias.component';
 import { NovaCategoriaComponent } from './components/Categoria/nova-categoria/nova-categoria.component';
+import { EditarCategoriaComponent } from './components/Categoria/editar-categoria/editar-categoria.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     ListarCategoriasComponent,
-    NovaCategoriaComponent
+    NovaCategoriaComponent,
+    EditarCategoriaComponent
   ],
   imports: [
     BrowserModule,

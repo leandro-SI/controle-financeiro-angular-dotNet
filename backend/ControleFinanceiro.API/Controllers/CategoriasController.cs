@@ -55,11 +55,6 @@ namespace ControleFinanceiro.API.Controllers
             if (categoriaDTO == null)
                 return BadRequest("Invalid Data.");
 
-            var categoria = await _categoriasService.GetById(id);
-
-            if (categoria == null)
-                return NotFound();
-
             if (id != categoriaDTO.Id)
                 return BadRequest("Invalid Data.");
 
