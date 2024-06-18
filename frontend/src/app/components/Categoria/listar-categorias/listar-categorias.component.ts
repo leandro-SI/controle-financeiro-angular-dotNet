@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { CategoriasService } from './../../../services/categorias/categorias.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
@@ -6,6 +6,8 @@ import { DialogExclusaoCategoriaComponent } from '../dialog-exclusao-categoria/d
 import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
 
 @Component({
   selector: 'app-listar-categorias',
@@ -20,6 +22,12 @@ export class ListarCategoriasComponent implements OnInit {
   opcoesCategorias: string[] = [];
   nomesCategorias: Observable<string[]>;
 
+  @ViewChild(MatPaginator, {static: true})
+  paginator: MatPaginator;
+
+  @ViewChild(MatSort, {static: true})
+  sort: MatSort;
+
   constructor(private categoriasService: CategoriasService,
     private dialog: MatDialog
   ) { }
@@ -31,6 +39,8 @@ export class ListarCategoriasComponent implements OnInit {
       });
 
       this.categorias.data = result;
+      this.categorias.paginator = this.paginator;
+      this.categorias.sort = this.sort;
     });
 
     this.displayColumns = this.ExibirColunas();

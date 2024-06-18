@@ -18,7 +18,8 @@ import { MatOptionModule } from '@angular/material/core';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
-
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
 
 //services
 import { TiposService } from './services/tipos/tipos.service';
@@ -58,6 +59,8 @@ import { DialogExclusaoCategoriaComponent } from './components/Categoria/dialog-
     MatGridListModule,
     MatDialogModule,
     MatAutocompleteModule,
+    MatPaginatorModule,
+    MatSortModule
   ],
   providers: [
     TiposService,

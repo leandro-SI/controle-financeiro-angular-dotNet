@@ -21,10 +21,10 @@
     </form>
   </div>
 
-  <table mat-table [dataSource]="categorias" class="mat-elevation-z8 tabela" >
+  <table mat-table matSort [dataSource]="categorias" class="mat-elevation-z8 tabela" >
 
     <ng-container matColumnDef="nome" >
-      <th mat-header-cell *matHeaderCellDef>Nome</th>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header="" >Nome</th>
       <td mat-cell *matCellDef="let categoria"> {{ categoria.nome }} </td>
     </ng-container>
 
@@ -33,8 +33,8 @@
       <td mat-cell *matCellDef="let categoria"> <mat-icon>{{ categoria.icone }}</mat-icon>  </td>
     </ng-container>
 
-    <ng-container matColumnDef="tipo" >
-      <th mat-header-cell *matHeaderCellDef>Tipo</th>
+    <ng-container matColumnDef="tipo">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header="" >Tipo</th>
       <td mat-cell *matCellDef="let categoria"> {{ categoria.tipo.nome }} </td>
     </ng-container>
 
@@ -50,4 +50,8 @@
     <tr mat-row *matRowDef="let row; columns: displayColumns" ></tr>
 
   </table>
+
+  <mat-paginator [pageSizeOptions]="[5, 10, 15, 20]" showFirstLastButtons >
+
+  </mat-paginator>
 </div>
