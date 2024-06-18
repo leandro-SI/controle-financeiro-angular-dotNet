@@ -3,6 +3,9 @@ import { CategoriasService } from './../../../services/categorias/categorias.ser
 import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogExclusaoCategoriaComponent } from '../dialog-exclusao-categoria/dialog-exclusao-categoria.component';
+import { FormControl } from '@angular/forms';
+import { Observable } from 'rxjs';
+import { map, startWith } from 'rxjs/operators';
 
 @Component({
   selector: 'app-listar-categorias',
@@ -12,8 +15,10 @@ import { DialogExclusaoCategoriaComponent } from '../dialog-exclusao-categoria/d
 export class ListarCategoriasComponent implements OnInit {
 
   categorias = new MatTableDataSource<any>();
-  //dataSource = new MatTableDataSource();
   displayColumns: string[]
+  autoCompleteInput = new FormControl();
+  opcoesCategorias: string[] = [];
+  nomesCategorias: Observable<string[]>;
 
   constructor(private categoriasService: CategoriasService,
     private dialog: MatDialog
@@ -21,10 +26,16 @@ export class ListarCategoriasComponent implements OnInit {
 
   ngOnInit() {
     this.categoriasService.getAll().subscribe(result => {
+      result.forEach((c) => {
+        this.opcoesCategorias.push(c.nome);
+      });
+
       this.categorias.data = result;
     });
 
     this.displayColumns = this.ExibirColunas();
+
+    this.nomesCategorias = this.autoCompleteInput.valueChanges.pipe(startWith(''), map(nome => this.FiltrarNomes(nome)))
   }
 
   ExibirColunas() : string[] {
@@ -45,6 +56,24 @@ export class ListarCategoriasComponent implements OnInit {
       }
       this.displayColumns = this.ExibirColunas();
     })
+  }
+
+  FiltrarNomes(nome: string) : string[] {
+    if (nome.trim().length >= 4) {
+      this.categoriasService.filtrar(nome).subscribe(result => {
+        this.categorias.data = result;
+      })
+    } else {
+      if (nome === '') {
+        this.categoriasService.getAll().subscribe(result => {
+          this.categorias.data = result
+        })
+      }
+    }
+
+    return this.opcoesCategorias.filter(categoria =>
+      categoria.toLowerCase().includes(nome.toLowerCase())
+    )
   }
 
 }

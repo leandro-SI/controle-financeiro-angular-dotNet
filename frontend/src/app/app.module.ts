@@ -16,7 +16,8 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatSelectModule } from '@angular/material/select';
 import { MatOptionModule } from '@angular/material/core';
 import { MatGridListModule } from '@angular/material/grid-list';
-import {MatDialogModule} from '@angular/material/dialog';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
 
 //services
@@ -55,7 +56,8 @@ import { DialogExclusaoCategoriaComponent } from './components/Categoria/dialog-
     MatSelectModule,
     MatOptionModule,
     MatGridListModule,
-    MatDialogModule
+    MatDialogModule,
+    MatAutocompleteModule,
   ],
   providers: [
     TiposService,

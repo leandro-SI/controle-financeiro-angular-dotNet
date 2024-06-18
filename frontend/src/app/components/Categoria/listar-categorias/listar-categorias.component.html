@@ -9,6 +9,18 @@
       </mat-grid-tile>
     </mat-grid-list>
   </div>
+
+  <div class="divAutoCompleteInput">
+    <form [formGroup]="" >
+      <mat-form-field class="autoCompleteInput" >
+        <input type="text" placeholder="Digite o que você procura" matInput [formControl]="autoCompleteInput" [matAutocomplete]="auto" >
+        <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete" >
+          <mat-option *ngFor="let nome of nomesCategorias | async" [value]="nome">{{nome}}</mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+    </form>
+  </div>
+
   <table mat-table [dataSource]="categorias" class="mat-elevation-z8 tabela" >
 
     <ng-container matColumnDef="nome" >

@@ -36,4 +36,8 @@ export class CategoriasService {
   delete(id: number) : Observable<any> {
     return this.http.delete<Number>(`${environment.urlApi}Categorias/delete/${id}`, httpOptions);
   }
+
+  filtrar(nome: string) : Observable<Categoria[]> {
+    return this.http.get<Categoria[]>(`${environment.urlApi}Categorias/filtrar/${nome}`)
+  }
 }
