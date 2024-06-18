@@ -46,7 +46,7 @@ namespace ControleFinanceiro.API.Controllers
 
             await _categoriasService.Create(categoriaDTO);
 
-            return Ok();
+            return Ok(new { mensagem = $"Categoria {categoriaDTO.Nome} criada com sucesso." });
         }
 
         [HttpPut("update/{id}")]
@@ -60,7 +60,7 @@ namespace ControleFinanceiro.API.Controllers
 
             await _categoriasService.Update(categoriaDTO);
 
-            return Ok();
+            return Ok( new { mensagem = $"Categoria {categoriaDTO.Nome} atualizada com sucesso." });
         }
 
         [HttpDelete("delete/{id}")]
@@ -73,7 +73,7 @@ namespace ControleFinanceiro.API.Controllers
 
             await _categoriasService.Delete(id);
 
-            return Ok();
+            return Ok(new { mensagem = $"Categoria {categoriaDto.Nome} excluida com sucesso." });
         }
 
         [HttpGet("filtrar/{nome}")]

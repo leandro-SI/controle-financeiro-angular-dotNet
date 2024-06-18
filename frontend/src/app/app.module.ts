@@ -20,6 +20,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 //services
 import { TiposService } from './services/tipos/tipos.service';
@@ -60,7 +61,8 @@ import { DialogExclusaoCategoriaComponent } from './components/Categoria/dialog-
     MatDialogModule,
     MatAutocompleteModule,
     MatPaginatorModule,
-    MatSortModule
+    MatSortModule,
+    MatSnackBarModule
   ],
   providers: [
     TiposService,

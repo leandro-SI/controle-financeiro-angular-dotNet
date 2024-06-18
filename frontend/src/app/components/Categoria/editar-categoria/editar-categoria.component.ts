@@ -6,6 +6,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { TiposService } from 'src/app/services/tipos/tipos.service';
 import { CategoriasService } from 'src/app/services/categorias/categorias.service';
 import { FormControl, FormGroup } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-editar-categoria',
@@ -23,7 +24,8 @@ export class EditarCategoriaComponent implements OnInit {
   constructor(private router: Router,
     private route: ActivatedRoute,
     private tipoService: TiposService,
-    private categoriaService: CategoriasService
+    private categoriaService: CategoriasService,
+    private snackBar: MatSnackBar
   ) { }
 
   ngOnInit() {
@@ -56,6 +58,11 @@ export class EditarCategoriaComponent implements OnInit {
     const categoria = this.formulario.value;
 
     this.categoriaService.update(this.categoriaId, categoria).subscribe(result => {
+      this.snackBar.open(result.mensagem, null, {
+        duration: 2000,
+        horizontalPosition: 'right',
+        verticalPosition: 'top'
+      })
       this.VoltarListagem();
     })
   }
