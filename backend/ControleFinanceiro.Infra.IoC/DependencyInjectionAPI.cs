@@ -1,10 +1,14 @@
-﻿using ControleFinanceiro.Application.Interfaces;
+﻿using ControleFinanceiro.Application.Dtos;
+using ControleFinanceiro.Application.Interfaces;
 using ControleFinanceiro.Application.Mappings;
 using ControleFinanceiro.Application.Services;
+using ControleFinanceiro.Application.Validations;
 using ControleFinanceiro.Domain.Entities;
 using ControleFinanceiro.Domain.Interfaces;
 using ControleFinanceiro.Infra.Data.Context;
 using ControleFinanceiro.Infra.Data.Repositories;
+using FluentValidation;
+using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -26,6 +30,11 @@ namespace ControleFinanceiro.Infra.IoC
                 options.UseSqlServer(configuration.GetConnectionString("DefaultConnection"
                 ), b => b.MigrationsAssembly(typeof(ApplicationDbContext).Assembly.FullName)));
 
+            services.AddFluentValidationAutoValidation();
+            services.AddFluentValidationClientsideAdapters();
+
+            services.AddTransient<IValidator<CategoriaDTO>, CategoriaValidator>();
+
             services.AddIdentity<Usuario, Funcao>().AddEntityFrameworkStores<ApplicationDbContext>();
 
             services.AddScoped<ICategoriaRepository, CategoriaRepository>();
@@ -34,6 +43,8 @@ namespace ControleFinanceiro.Infra.IoC
             services.AddScoped<ITipoService, TipoService>();
 
             services.AddAutoMapper(typeof(DomainToDTOMappingProfile));
+
+
 
             return services;
         }

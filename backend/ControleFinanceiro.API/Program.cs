@@ -1,4 +1,5 @@
 using ControleFinanceiro.Infra.IoC;
+using FluentValidation.AspNetCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
