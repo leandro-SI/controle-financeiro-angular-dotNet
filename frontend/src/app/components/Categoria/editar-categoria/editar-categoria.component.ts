@@ -20,6 +20,7 @@ export class EditarCategoriaComponent implements OnInit {
   categoriaId: number
   tipos: Tipo[];
   formulario: any;
+  erros: string[];
 
   constructor(private router: Router,
     private route: ActivatedRoute,
@@ -29,6 +30,7 @@ export class EditarCategoriaComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.erros = [];
     this.categoriaId = this.route.snapshot.params.id;
 
     this.tipoService.GetAll().subscribe(result => {
@@ -56,7 +58,7 @@ export class EditarCategoriaComponent implements OnInit {
 
   AtualizarCategoria() : void {
     const categoria = this.formulario.value;
-
+    this.erros = [];
     this.categoriaService.update(this.categoriaId, categoria).subscribe(result => {
       this.snackBar.open(result.mensagem, null, {
         duration: 2000,
@@ -64,6 +66,15 @@ export class EditarCategoriaComponent implements OnInit {
         verticalPosition: 'top'
       })
       this.VoltarListagem();
+    },
+    (err) => {
+      if (err.error.status === 400) {
+        for(const campo in err.error.errors) {
+          if (err.error.errors.hasOwnProperty(campo)) {
+            this.erros.push(err.error.errors[campo])
+          }
+        }
+      }
     })
   }
 
