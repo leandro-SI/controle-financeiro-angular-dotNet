@@ -78,5 +78,16 @@ namespace ControleFinanceiro.API.Controllers
             return Ok(new { mensagem = $"Função {funcao.Name} deletada com sucesso." });
         }
 
+        [HttpGet("filtrar/{nome}")]
+        public async Task<IActionResult> Filtrar(string nome)
+        {
+            var funcoes = await _funcaoService.Filtrar(nome);
+
+            if (funcoes == null)
+                return NotFound();
+
+            return Ok(funcoes);
+        }
+
     }
 }

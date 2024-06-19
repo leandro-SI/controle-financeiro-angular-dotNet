@@ -9,5 +9,6 @@ namespace ControleFinanceiro.Domain.Interfaces
         Task AdicionarAsync(Funcao funcao);
         Task AtualizarAsync(Funcao funcao);
         Task DeleteAsync(Funcao funcao);
+        Task<IEnumerable<Funcao>> Filtrar(string nome);
     }
 }

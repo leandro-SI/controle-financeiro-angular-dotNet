@@ -21,6 +21,15 @@
   margin-left: 5px;
 }
 
-mat-form-field {
+.divAutoCompleteInput {
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+.autoCompleteInput {
+  width: 500px;
+}
+
+mat-form-field.mat-form-field {
   width: 300px;
 }

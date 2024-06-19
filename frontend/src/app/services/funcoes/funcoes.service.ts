@@ -35,4 +35,8 @@ constructor(private http: HttpClient) { }
   delete(id: string) : Observable<any> {
     return this.http.delete<Number>(`${environment.urlApi}Funcoes/delete/${id}`, httpOptions);
   }
+
+  filtrar(name: string) : Observable<Funcao[]> {
+    return this.http.get<Funcao[]>(`${environment.urlApi}Funcoes/filtrar/${name}`)
+  }
 }

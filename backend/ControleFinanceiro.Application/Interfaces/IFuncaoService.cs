@@ -15,5 +15,6 @@ namespace ControleFinanceiro.Application.Interfaces
         Task Adicionar(FuncaoDTO funcao);
         Task Atualizar(FuncaoDTO funcao);
         Task Delete(FuncaoDTO funcaoDto);
+        Task<IEnumerable<FuncaoDTO>> Filtrar(string nome);
     }
 }

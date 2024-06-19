@@ -56,5 +56,10 @@ namespace ControleFinanceiro.Infra.Data.Repositories
         {
             await _roleManager.DeleteAsync(funcao);
         }
+
+        public async Task<IEnumerable<Funcao>> Filtrar(string nome)
+        {
+            return await _context.Funcoes.Where(c => c.Name.ToLower().Contains(nome.ToLower())).ToListAsync();
+        }
     }
 }
