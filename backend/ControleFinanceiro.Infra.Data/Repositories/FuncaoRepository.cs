@@ -2,7 +2,7 @@
 using ControleFinanceiro.Domain.Interfaces;
 using ControleFinanceiro.Infra.Data.Context;
 using Microsoft.AspNetCore.Identity;
-
+using Microsoft.EntityFrameworkCore;
 
 namespace ControleFinanceiro.Infra.Data.Repositories
 {
@@ -15,6 +15,11 @@ namespace ControleFinanceiro.Infra.Data.Repositories
         {
             _context = context;
             _roleManager = roleManager;
+        }
+
+        public async Task<IEnumerable<Funcao>> GetAllAsync()
+        {
+            return await _context.Funcoes.ToListAsync();
         }
 
         public async Task<Funcao> GetByIdAsync(string id)
@@ -47,6 +52,9 @@ namespace ControleFinanceiro.Infra.Data.Repositories
             }
         }
 
-
+        public async Task DeleteAsync(Funcao funcao)
+        {
+            await _roleManager.DeleteAsync(funcao);
+        }
     }
 }

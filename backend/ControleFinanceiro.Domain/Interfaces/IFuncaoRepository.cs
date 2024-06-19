@@ -4,8 +4,10 @@ namespace ControleFinanceiro.Domain.Interfaces
 {
     public interface IFuncaoRepository
     {
+        Task<IEnumerable<Funcao>> GetAllAsync();
         Task<Funcao> GetByIdAsync(string id);
         Task AdicionarAsync(Funcao funcao);
         Task AtualizarAsync(Funcao funcao);
+        Task DeleteAsync(Funcao funcao);
     }
 }

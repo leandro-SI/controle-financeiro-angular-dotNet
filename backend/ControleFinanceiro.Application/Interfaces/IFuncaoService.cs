@@ -10,8 +10,10 @@ namespace ControleFinanceiro.Application.Interfaces
 {
     public interface IFuncaoService
     {
+        Task<IEnumerable<FuncaoDTO>> GetAll();
         Task<FuncaoDTO> GetById(string id);
         Task Adicionar(FuncaoDTO funcao);
         Task Atualizar(FuncaoDTO funcao);
+        Task Delete(FuncaoDTO funcaoDto);
     }
 }

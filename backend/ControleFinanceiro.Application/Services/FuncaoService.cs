@@ -22,6 +22,13 @@ namespace ControleFinanceiro.Application.Services
             _mapper = mapper;
         }
 
+        public async Task<IEnumerable<FuncaoDTO>> GetAll()
+        {
+            var entities = await _funcaoRepository.GetAllAsync();
+
+            return _mapper.Map<IEnumerable<FuncaoDTO>>(entities);
+        }
+
         public async Task<FuncaoDTO> GetById(string id)
         {
             var entityDto = await _funcaoRepository.GetByIdAsync(id);
@@ -47,6 +54,11 @@ namespace ControleFinanceiro.Application.Services
             await _funcaoRepository.AtualizarAsync(funcao);
         }
 
+        public async Task Delete(FuncaoDTO funcaoDTO)
+        {
+            var entity = _mapper.Map<Funcao>(funcaoDTO);
 
+            await _funcaoRepository.DeleteAsync(entity);
+        }
     }
 }
