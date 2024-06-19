@@ -5,7 +5,7 @@ import { Tipo } from 'src/app/models/Tipo';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TiposService } from 'src/app/services/tipos/tipos.service';
 import { CategoriasService } from 'src/app/services/categorias/categorias.service';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
@@ -41,9 +41,9 @@ export class EditarCategoriaComponent implements OnInit {
       this.nomeCategoria = result.nome;
       this.formulario = new FormGroup({
         id: new FormControl(result.id),
-        nome: new FormControl(result.nome),
-        icone: new FormControl(result.icone),
-        tipoId: new FormControl(result.tipoId)
+        nome: new FormControl(result.nome, [Validators.required, Validators.maxLength(50)]),
+        icone: new FormControl(result.icone, [Validators.required, Validators.maxLength(15)]),
+        tipoId: new FormControl(result.tipoId, [Validators.required])
       })
     });
   }
