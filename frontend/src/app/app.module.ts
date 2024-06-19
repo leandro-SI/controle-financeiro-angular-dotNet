@@ -22,17 +22,20 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 //services
 import { TiposService } from './services/tipos/tipos.service';
 import { CategoriasService } from './services/categorias/categorias.service';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FuncoesService } from './services/funcoes/funcoes.service';
 
 //componentes
 import { ListarCategoriasComponent } from './components/Categoria/listar-categorias/listar-categorias.component';
 import { NovaCategoriaComponent } from './components/Categoria/nova-categoria/nova-categoria.component';
 import { EditarCategoriaComponent } from './components/Categoria/editar-categoria/editar-categoria.component';
 import { DialogExclusaoCategoriaComponent } from './components/Categoria/dialog-exclusao-categoria/dialog-exclusao-categoria.component';
+import { ListarFuncoesComponent } from './components/Funcao/listar-funcoes/listar-funcoes.component';
 
 
 @NgModule({
@@ -41,7 +44,8 @@ import { DialogExclusaoCategoriaComponent } from './components/Categoria/dialog-
     ListarCategoriasComponent,
     NovaCategoriaComponent,
     EditarCategoriaComponent,
-    DialogExclusaoCategoriaComponent
+    DialogExclusaoCategoriaComponent,
+    ListarFuncoesComponent
   ],
   imports: [
     BrowserModule,
@@ -67,9 +71,10 @@ import { DialogExclusaoCategoriaComponent } from './components/Categoria/dialog-
     MatProgressBarModule
   ],
   providers: [
+    HttpClientModule,
     TiposService,
     CategoriasService,
-    HttpClientModule
+    FuncoesService
   ],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
