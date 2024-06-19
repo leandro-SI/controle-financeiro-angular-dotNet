@@ -24,6 +24,7 @@ export class ListarFuncoesComponent implements OnInit {
 
   ngOnInit() {
     this.funcoesService.getAll().subscribe(result => {
+      console.log(result);
       this.funcoes.data = result;
       this.funcoes.paginator = this.paginator;
       this.funcoes.sort = this.sort;
