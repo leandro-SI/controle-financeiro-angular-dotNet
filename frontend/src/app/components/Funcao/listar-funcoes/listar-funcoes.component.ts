@@ -6,6 +6,8 @@ import { MatTableDataSource } from '@angular/material/table';
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 import { FuncoesService } from 'src/app/services/funcoes/funcoes.service';
+import { DialogExcluirFuncaoComponent } from '../dialog-excluir-funcao/dialog-excluir-funcao.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-listar-funcoes',
@@ -26,7 +28,9 @@ export class ListarFuncoesComponent implements OnInit {
   @ViewChild(MatSort, {static: true})
   sort: MatSort;
 
-  constructor(private funcoesService: FuncoesService) { }
+  constructor(private funcoesService: FuncoesService,
+    private dialog: MatDialog
+  ) { }
 
   ngOnInit() {
     this.funcoesService.getAll().subscribe(result => {
@@ -64,6 +68,22 @@ export class ListarFuncoesComponent implements OnInit {
     return this.opcoesFuncoes.filter(funcao =>
       funcao.toLowerCase().includes(nome.toLowerCase())
     )
+  }
+
+  AbrirDialog(funcaoId, nome): void {
+    this.dialog.open(DialogExcluirFuncaoComponent, {
+      data: {
+        id: funcaoId,
+        nome: nome
+      }
+    }).afterClosed().subscribe(result => {
+      if (result == true) {
+        this.funcoesService.getAll().subscribe(dados => {
+          this.funcoes.data = dados;
+        })
+      }
+      this.displayColumns = this.ExibirColunas();
+    })
   }
 
 }

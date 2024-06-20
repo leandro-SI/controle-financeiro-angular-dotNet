@@ -24,7 +24,7 @@ namespace ControleFinanceiro.Infra.Data.Repositories
 
         public async Task<Funcao> GetByIdAsync(string id)
         {
-            return await _context.Funcoes.FindAsync(id);
+            return await _context.Funcoes.AsNoTracking().FirstOrDefaultAsync(x => x.Id == id);
         }
 
         public async Task AdicionarAsync(Funcao funcao)
