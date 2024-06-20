@@ -61,7 +61,7 @@ export class EditarCategoriaComponent implements OnInit {
     this.erros = [];
     this.categoriaService.update(this.categoriaId, categoria).subscribe(result => {
       this.snackBar.open(result.mensagem, null, {
-        duration: 2000,
+        duration: 3000,
         horizontalPosition: 'right',
         verticalPosition: 'top'
       })

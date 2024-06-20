@@ -2,7 +2,7 @@
   <mat-progress-bar mode="buffer" ></mat-progress-bar>
 </div>
 
-<div class="dadosCategorias" *ngIf="funcoes" >
+<div class="dadosCategorias" >
   <div class="cabecalho">
     <mat-grid-list cols="2" rowHeight="40px" >
       <mat-grid-tile>
@@ -27,7 +27,7 @@
     </form>
   </div>
 
-  <table mat-table matSort [dataSource]="funcoes" class="mat-elevation-z8 tabela" >
+  <table mat-table matSort [dataSource]="funcoes" class="mat-elevation-z8 tabela" *ngIf="funcoes" >
     <ng-container matColumnDef="name" >
       <th mat-header-cell *matHeaderCellDef mat-sort-header="" >Nome</th>
       <td mat-cell *matCellDef="let funcao"> {{ funcao.name }} </td>

@@ -5,6 +5,7 @@ import { NovaCategoriaComponent } from './components/Categoria/nova-categoria/no
 import { EditarCategoriaComponent } from './components/Categoria/editar-categoria/editar-categoria.component';
 import { ListarFuncoesComponent } from './components/Funcao/listar-funcoes/listar-funcoes.component';
 import { NovaFuncaoComponent } from './components/Funcao/nova-funcao/nova-funcao.component';
+import { EditarFuncaoComponent } from './components/Funcao/editar-funcao/editar-funcao.component';
 
 
 const routes: Routes = [
@@ -22,6 +23,9 @@ const routes: Routes = [
   },
   {
     path: 'funcoes/nova', component: NovaFuncaoComponent
+  },
+  {
+    path: 'funcoes/editar/:id', component: EditarFuncaoComponent
   }
 ];
 

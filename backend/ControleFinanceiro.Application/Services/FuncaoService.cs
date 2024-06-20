@@ -46,11 +46,10 @@ namespace ControleFinanceiro.Application.Services
 
         public async Task Atualizar(FuncaoDTO funcaoDto)
         {
-            var funcao = _mapper.Map<Funcao>(funcaoDto);
-
-            funcao.Name = funcao.Name;
-            funcao.NormalizedName = funcao.NormalizedName;
-            funcao.Descricao = funcao.Descricao;
+            var funcao = await _funcaoRepository.GetByIdAsync(funcaoDto.Id);
+            funcao.Name = funcaoDto.Name;
+            funcao.NormalizedName = funcaoDto.NormalizedName;
+            funcao.Descricao = funcaoDto.Descricao;
 
             await _funcaoRepository.AtualizarAsync(funcao);
         }

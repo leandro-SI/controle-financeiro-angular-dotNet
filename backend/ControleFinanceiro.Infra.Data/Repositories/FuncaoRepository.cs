@@ -45,6 +45,7 @@ namespace ControleFinanceiro.Infra.Data.Repositories
             try
             {
                 await _roleManager.UpdateAsync(funcao);
+
             }
             catch (Exception ex)
             {

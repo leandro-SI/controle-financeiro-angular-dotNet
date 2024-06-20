@@ -1,7 +1,7 @@
 <div class="divCard" *ngIf="!categorias">
   <mat-progress-bar mode="buffer" ></mat-progress-bar>
 </div>
-<div class="dadosCategorias" *ngIf="categorias" >
+<div class="dadosCategorias" >
   <div class="cabecalho">
     <mat-grid-list cols="2" rowHeight="50px" >
       <mat-grid-tile>
@@ -24,7 +24,7 @@
     </form>
   </div>
 
-  <table mat-table matSort [dataSource]="categorias" class="mat-elevation-z8 tabela" >
+  <table mat-table matSort [dataSource]="categorias" class="mat-elevation-z8 tabela" *ngIf="categorias" >
 
     <ng-container matColumnDef="nome" >
       <th mat-header-cell *matHeaderCellDef mat-sort-header="" >Nome</th>
