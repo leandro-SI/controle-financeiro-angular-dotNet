@@ -16,6 +16,7 @@ namespace ControleFinanceiro.Application.Mappings
             CreateMap<Categoria, CategoriaDTO>().ReverseMap();
             CreateMap<Tipo, TipoDTO>().ReverseMap();
             CreateMap<Funcao, FuncaoDTO>().ReverseMap();
+            CreateMap<Usuario, UsuarioDTO>().ReverseMap();
         }
     }
 }
