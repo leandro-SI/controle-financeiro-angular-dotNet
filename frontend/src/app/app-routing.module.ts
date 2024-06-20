@@ -4,6 +4,7 @@ import { ListarCategoriasComponent } from './components/Categoria/listar-categor
 import { NovaCategoriaComponent } from './components/Categoria/nova-categoria/nova-categoria.component';
 import { EditarCategoriaComponent } from './components/Categoria/editar-categoria/editar-categoria.component';
 import { ListarFuncoesComponent } from './components/Funcao/listar-funcoes/listar-funcoes.component';
+import { NovaFuncaoComponent } from './components/Funcao/nova-funcao/nova-funcao.component';
 
 
 const routes: Routes = [
@@ -18,6 +19,9 @@ const routes: Routes = [
   },
   {
     path: 'funcoes/listar', component: ListarFuncoesComponent
+  },
+  {
+    path: 'funcoes/nova', component: NovaFuncaoComponent
   }
 ];
 

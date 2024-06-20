@@ -36,6 +36,7 @@ import { NovaCategoriaComponent } from './components/Categoria/nova-categoria/no
 import { EditarCategoriaComponent } from './components/Categoria/editar-categoria/editar-categoria.component';
 import { DialogExclusaoCategoriaComponent } from './components/Categoria/dialog-exclusao-categoria/dialog-exclusao-categoria.component';
 import { ListarFuncoesComponent } from './components/Funcao/listar-funcoes/listar-funcoes.component';
+import { NovaFuncaoComponent } from './components/Funcao/nova-funcao/nova-funcao.component';
 
 
 @NgModule({
@@ -45,7 +46,8 @@ import { ListarFuncoesComponent } from './components/Funcao/listar-funcoes/lista
     NovaCategoriaComponent,
     EditarCategoriaComponent,
     DialogExclusaoCategoriaComponent,
-    ListarFuncoesComponent
+    ListarFuncoesComponent,
+    NovaFuncaoComponent
   ],
   imports: [
     BrowserModule,
