@@ -34,6 +34,8 @@ namespace ControleFinanceiro.Infra.IoC
             services.AddFluentValidationClientsideAdapters();
 
             services.AddTransient<IValidator<CategoriaDTO>, CategoriaValidator>();
+            services.AddTransient<IValidator<FuncaoDTO>, FuncaoValidator>();
+            services.AddTransient<IValidator<RegisterDTO>, RegisterValidator>();
 
             services.AddIdentity<Usuario, Funcao>().AddEntityFrameworkStores<ApplicationDbContext>();
 

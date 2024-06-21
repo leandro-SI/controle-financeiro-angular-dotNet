@@ -14,12 +14,14 @@ namespace ControleFinanceiro.Application.Validations
         {
             RuleFor(c => c.Name)
                 .NotNull().WithMessage("Preencha o nome")
-                .NotEmpty().WithMessage("Preencha o nome");
+                .NotEmpty().WithMessage("Preencha o nome")
+                .MinimumLength(1).WithMessage("Use mais caracteres.")
+                .MaximumLength(50).WithMessage("Use menos caracteres.");
 
             RuleFor(c => c.Descricao)
                 .NotNull().WithMessage("Preencha a descrição")
                 .NotEmpty().WithMessage("Preencha o descrição")
-                .MinimumLength(6).WithMessage("Use mais caracteres.")
+                .MinimumLength(1).WithMessage("Use mais caracteres.")
                 .MaximumLength(50).WithMessage("Use menos caracteres.");
         }
     }
