@@ -15,4 +15,8 @@
     <ProjectReference Include="..\ControleFinanceiro.Infra.Data\ControleFinanceiro.Infra.Data.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Extensions\" />
+  </ItemGroup>
+
 </Project>

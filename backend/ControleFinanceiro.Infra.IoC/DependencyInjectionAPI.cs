@@ -30,6 +30,16 @@ namespace ControleFinanceiro.Infra.IoC
                 options.UseSqlServer(configuration.GetConnectionString("DefaultConnection"
                 ), b => b.MigrationsAssembly(typeof(ApplicationDbContext).Assembly.FullName)));
 
+            services.Configure<IdentityOptions>(options =>
+            {
+                options.Password.RequireDigit = false;
+                options.Password.RequireLowercase = false;
+                options.Password.RequiredLength = 6;
+                options.Password.RequireNonAlphanumeric = false;
+                options.Password.RequireUppercase = false;
+                options.Password.RequiredUniqueChars = 0;
+            });
+
             services.AddFluentValidationAutoValidation();
             services.AddFluentValidationClientsideAdapters();
 
