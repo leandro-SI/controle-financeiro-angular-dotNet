@@ -1,4 +1,5 @@
 ﻿using ControleFinanceiro.Domain.Entities;
+using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ControleFinanceiro.Application.Dtos
 {
-    public class UsuarioDTO
+    public class UsuarioDTO : IdentityUser<string>
     {
         public string CPF { get; set; }
         public string Profissao { get; set; }
