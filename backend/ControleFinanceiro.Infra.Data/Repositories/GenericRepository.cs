@@ -45,5 +45,11 @@ namespace ControleFinanceiro.Infra.Data.Repositories
             registro.State = EntityState.Modified;
             await _context.SaveChangesAsync();
         }
+
+        public async Task<T> FindById(string id)
+        {
+            var entity = await _context.Set<T>().FindAsync(id);
+            return entity;
+        }
     }
 }

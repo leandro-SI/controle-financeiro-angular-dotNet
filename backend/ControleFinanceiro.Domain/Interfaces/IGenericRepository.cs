@@ -6,6 +6,7 @@ namespace ControleFinanceiro.Domain.Interfaces
     {
         Task Create(T entity);
         Task<T> FindById(int id);
+        Task<T> FindById(string id);
         Task<IEnumerable<T>> FindAll();
         Task Update(T entity);
         Task Delete(int id);

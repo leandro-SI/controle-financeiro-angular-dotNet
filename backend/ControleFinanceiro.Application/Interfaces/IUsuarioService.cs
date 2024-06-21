@@ -12,6 +12,7 @@ namespace ControleFinanceiro.Application.Interfaces
     public interface IUsuarioService
     {
         Task<int> GetQuantidade();
+        Task<UsuarioDTO> GetById(string id);
         Task<IdentityResult> CriarUsuario(UsuarioDTO usuarioDto, string senha);
         Task VincularUsuarioFuncao(UsuarioDTO usuarioDto, string funcao);
         Task LogarUsuario(UsuarioDTO usuarioDto, bool lembrar);

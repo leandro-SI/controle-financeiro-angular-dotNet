@@ -23,6 +23,13 @@ namespace ControleFinanceiro.Application.Services
             _mapper = mapper;
         }
 
+        public async Task<UsuarioDTO> GetById(string id)
+        {
+            var entity = await _usuarioRepository.FindById(id);
+
+            return _mapper.Map<UsuarioDTO>(entity);
+        }
+
         public async Task<IdentityResult> CriarUsuario(UsuarioDTO usuarioDto, string senha)
         {
             var usuario = _mapper.Map<Usuario>(usuarioDto);
