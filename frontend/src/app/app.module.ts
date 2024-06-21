@@ -41,6 +41,7 @@ import { ListarFuncoesComponent } from './components/Funcao/listar-funcoes/lista
 import { NovaFuncaoComponent } from './components/Funcao/nova-funcao/nova-funcao.component';
 import { EditarFuncaoComponent } from './components/Funcao/editar-funcao/editar-funcao.component';
 import { DialogExcluirFuncaoComponent } from './components/Funcao/dialog-excluir-funcao/dialog-excluir-funcao.component';
+import { RegisterUsuarioComponent } from './components/Usuario/register-usuario/register-usuario.component';
 
 
 @NgModule({
@@ -53,7 +54,8 @@ import { DialogExcluirFuncaoComponent } from './components/Funcao/dialog-excluir
     ListarFuncoesComponent,
     NovaFuncaoComponent,
     EditarFuncaoComponent,
-    DialogExcluirFuncaoComponent
+    DialogExcluirFuncaoComponent,
+    RegisterUsuarioComponent
   ],
   imports: [
     BrowserModule,
