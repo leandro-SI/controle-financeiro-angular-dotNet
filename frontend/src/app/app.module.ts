@@ -29,6 +29,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TiposService } from './services/tipos/tipos.service';
 import { CategoriasService } from './services/categorias/categorias.service';
 import { FuncoesService } from './services/funcoes/funcoes.service';
+import { UsuariosService } from './services/usuarios/Usuarios.service';
+
 
 //componentes
 import { ListarCategoriasComponent } from './components/Categoria/listar-categorias/listar-categorias.component';
@@ -80,7 +82,8 @@ import { DialogExcluirFuncaoComponent } from './components/Funcao/dialog-excluir
     HttpClientModule,
     TiposService,
     CategoriasService,
-    FuncoesService
+    FuncoesService,
+    UsuariosService
   ],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
