@@ -7,6 +7,7 @@ import { ListarFuncoesComponent } from './components/Funcao/listar-funcoes/lista
 import { NovaFuncaoComponent } from './components/Funcao/nova-funcao/nova-funcao.component';
 import { EditarFuncaoComponent } from './components/Funcao/editar-funcao/editar-funcao.component';
 import { RegisterUsuarioComponent } from './components/Usuario/register-usuario/register-usuario.component';
+import { LoginUsuarioComponent } from './components/Usuario/login-usuario/login-usuario.component';
 
 
 const routes: Routes = [
@@ -30,6 +31,9 @@ const routes: Routes = [
   },
   {
     path: 'usuarios/registrar', component: RegisterUsuarioComponent
+  },
+  {
+    path: 'usuarios/login', component: LoginUsuarioComponent
   }
 ];
 
