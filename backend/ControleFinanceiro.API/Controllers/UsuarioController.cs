@@ -1,5 +1,6 @@
 ﻿using ControleFinanceiro.Application.Dtos;
 using ControleFinanceiro.Application.Interfaces;
+using ControleFinanceiro.Domain.Entities;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -68,13 +69,15 @@ namespace ControleFinanceiro.API.Controllers
 
             if (usuarioCriado.Succeeded)
             {
+                usuarioDto.SecurityStamp = Guid.NewGuid().ToString();
                 await _usuarioService.VincularUsuarioFuncao(usuarioDto, funcao);
-                await _usuarioService.LogarUsuario(usuarioDto, false);
+                //await _usuarioService.LogarUsuario(usuarioDto, false);
 
                 return Ok(new
                 {
                     email = usuarioDto.Email,
                     usuarioId = usuarioDto.Id,
+                    mensagem = "Usuário registrado com sucesso."
                 });
             }
 

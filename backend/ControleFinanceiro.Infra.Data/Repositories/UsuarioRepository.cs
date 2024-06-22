@@ -36,12 +36,30 @@ namespace ControleFinanceiro.Infra.Data.Repositories
 
         public async Task LogarUsuario(Usuario usuario, bool lembrar)
         {
-            await _signInManager.SignInAsync(usuario, false);
+            try
+            {
+                await _signInManager.SignInAsync(usuario, false);
+            }
+            catch (Exception e)
+            {
+
+                throw new Exception(e.Message);
+            }
+           
         }
 
         public async Task VincularUsuarioFuncao(Usuario usuario, string funcao)
         {
-            await _userManager.AddToRoleAsync(usuario, funcao);
+            try
+            {
+                await _userManager.AddToRoleAsync(usuario, funcao);
+            }
+            catch (Exception e)
+            {
+
+                throw new Exception(e.Message);
+            }
+            
         }
     }
 }

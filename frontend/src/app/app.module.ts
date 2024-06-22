@@ -23,6 +23,8 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { NgxMaskModule } from 'ngx-mask';
 
 
 //services
@@ -78,7 +80,10 @@ import { RegisterUsuarioComponent } from './components/Usuario/register-usuario/
     MatPaginatorModule,
     MatSortModule,
     MatSnackBarModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    FlexLayoutModule,
+    NgxMaskModule.forRoot(),
+
   ],
   providers: [
     HttpClientModule,

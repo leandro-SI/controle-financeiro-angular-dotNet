@@ -23,7 +23,7 @@ export class UsuariosService {
   }
 
   registrarUsuario(dadosRegistro: RegistroUsuario) : Observable<any> {
-    return this.http.post<RegistroUsuario>(`${environment.urlApi}Usuario/registrar`, dadosRegistro)
+    return this.http.post<RegistroUsuario>(`${environment.urlApi}Usuario/registrar`, dadosRegistro, httpOptions)
   }
 
 }
