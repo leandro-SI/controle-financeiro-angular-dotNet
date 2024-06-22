@@ -1,5 +1,4 @@
 using ControleFinanceiro.Infra.IoC;
-using FluentValidation.AspNetCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,6 +13,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddInfraEstructureAPI(builder.Configuration);
+builder.Services.AddInfraEstructureJWT(builder.Configuration);
 
 var app = builder.Build();
 
@@ -25,6 +25,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseCors(options => options.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
+
+app.UseAuthentication();
 
 app.UseAuthorization();
 
