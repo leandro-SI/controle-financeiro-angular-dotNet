@@ -12,7 +12,7 @@ import { UsuariosService } from 'src/app/services/usuarios/Usuarios.service';
 export class LoginUsuarioComponent implements OnInit {
 
   formulario: any;
-  erros: [];
+  erros: string[];
 
   constructor(private usuarioService: UsuariosService,
     private router: Router,
@@ -34,8 +34,30 @@ export class LoginUsuarioComponent implements OnInit {
   }
 
   EnviarFormulario() : void {
-    const usuario = this.formulario.value;
     this.erros = [];
+    const usuario = this.formulario.value;
+
+    this.usuarioService.logarUsuario(usuario).subscribe(result => {
+      const emailUsuarioLogado = result.email;
+      const usuarioId = result.usuarioId;
+
+      localStorage.setItem('EmailUsuarioLogado', emailUsuarioLogado);
+      localStorage.setItem('UsuarioId', usuarioId);
+
+      this.router.navigate(['/categorias/listar']);
+
+    },
+    (err) => {
+      if (err.status === 400) {
+        for(const campo in err.error.errors) {
+          if (err.error.errors.hasOwnProperty(campo)) {
+            this.erros.push(err.error.errors[campo])
+          }
+        }
+      } else {
+        this.erros.push(err.error);
+      }
+    })
 
   }
 

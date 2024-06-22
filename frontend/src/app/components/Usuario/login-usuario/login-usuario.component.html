@@ -24,7 +24,7 @@
     </div>
 
     <div class="formulario">
-      <form [formGroup]="formulario">
+      <form [formGroup]="formulario" (ngSubmit)="EnviarFormulario()" >
         <div>
           <mat-form-field>
             <mat-label>Email</mat-label>
@@ -44,7 +44,7 @@
         <div>
           <mat-form-field>
             <mat-label>Senha</mat-label>
-            <input type="password" formControlName="senha" placeholder="Digite sua senha" matInput required minlength="10" maxlength="50"  >
+            <input type="password" formControlName="senha" placeholder="Digite sua senha" matInput required minlength="1" maxlength="30"  >
             <mat-error *ngIf="propriedade.senha.touched && propriedade.senha.invalid" >
               <sup>*</sup> Digite sua senha
             </mat-error>
@@ -56,20 +56,20 @@
             </mat-error>
           </mat-form-field>
         </div>
+
+        <br><br>
+        <mat-divider></mat-divider>
+
+        <div fxLayout="row" fxLayoutGap="10px" fxLayoutAlign="end center" class="botoes" >
+          <div>
+            <button type="submit" mat-stroked-button color="primary" [disabled]="formulario.invalid">Logar</button>
+          </div>
+          <div>
+            <button type="button" mat-stroked-button color="accent" [routerLink]="['/usuarios/registrar']">Não possuo conta</button>
+          </div>
+        </div>
+
       </form>
-
-      <br><br>
-      <mat-divider></mat-divider>
-
-      <div fxLayout="row" fxLayoutGap="10px" fxLayoutAlign="end center" class="botoes" >
-        <div>
-          <button type="submit" mat-stroked-button color="primary" [disabled]="formulario.invalid">Logar</button>
-        </div>
-        <div>
-          <button type="button" mat-stroked-button color="accent" [routerLink]="['/usuarios/registrar']">Não possuo conta</button>
-        </div>
-      </div>
-
     </div>
 
   </div>

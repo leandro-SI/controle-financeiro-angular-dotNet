@@ -28,7 +28,7 @@ export class UsuariosService {
   }
 
   logarUsuario(dadosLogin: LoginUsuario): Observable<any> {
-    return this.http.post<RegistroUsuario>(`${environment.urlApi}Usuarios/logar`, dadosLogin, httpOptions)
+    return this.http.post<RegistroUsuario>(`${environment.urlApi}Usuario/logar`, dadosLogin, httpOptions)
   }
 
 }
