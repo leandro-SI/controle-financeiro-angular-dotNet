@@ -29,6 +29,11 @@ namespace ControleFinanceiro.Infra.Data.Repositories
             return await _userManager.CreateAsync(usuario, senha);
         }
 
+        public async Task<Usuario> GetByEmail(string email)
+        {
+            return await _userManager.FindByEmailAsync(email);
+        }
+
         public async Task<int> GetQuantidade()
         {
             return await _context.Usuarios.CountAsync();

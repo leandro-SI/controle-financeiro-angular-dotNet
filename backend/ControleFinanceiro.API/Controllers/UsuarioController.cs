@@ -84,5 +84,34 @@ namespace ControleFinanceiro.API.Controllers
             return BadRequest(registerDTO);
         }
 
+        [HttpPost("logar")]
+        public async Task<IActionResult> Logar([FromBody] LoginDTO loginDto)
+        {
+            if (loginDto == null)
+                return NotFound("Usuario ou senha inválidos.");
+
+
+            var usuario = await _usuarioService.GetByEmail(loginDto.Email);
+
+            if (usuario != null)
+            {
+                PasswordHasher<UsuarioDTO> passwordHasher = new PasswordHasher<UsuarioDTO>();
+                if (passwordHasher.VerifyHashedPassword(usuario, usuario.PasswordHash, loginDto.Senha) != PasswordVerificationResult.Failed)
+                {
+                    await _usuarioService.LogarUsuario(usuario, false);
+
+                    return Ok(new
+                    {
+                        email = usuario.Email,
+                        usuarioId = usuario.Id
+                    });
+                }
+                return NotFound("Usuário inválido.");
+
+            }
+
+            return NotFound("Usuário inválido.");
+        }
+
     }
 }

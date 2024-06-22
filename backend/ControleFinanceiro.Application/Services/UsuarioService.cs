@@ -52,5 +52,12 @@ namespace ControleFinanceiro.Application.Services
             var usuario = _mapper.Map<Usuario>(usuarioDto);
             await _usuarioRepository.VincularUsuarioFuncao(usuario, funcao);
         }
+
+        public async Task<UsuarioDTO> GetByEmail(string email)
+        {
+            var entity = await _usuarioRepository.GetByEmail(email);
+
+            return _mapper.Map<UsuarioDTO>(entity);
+        }
     }
 }

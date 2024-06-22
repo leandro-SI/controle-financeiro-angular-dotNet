@@ -13,6 +13,7 @@ namespace ControleFinanceiro.Application.Interfaces
     {
         Task<int> GetQuantidade();
         Task<UsuarioDTO> GetById(string id);
+        Task<UsuarioDTO> GetByEmail(string email);
         Task<IdentityResult> CriarUsuario(UsuarioDTO usuarioDto, string senha);
         Task VincularUsuarioFuncao(UsuarioDTO usuarioDto, string funcao);
         Task LogarUsuario(UsuarioDTO usuarioDto, bool lembrar);
