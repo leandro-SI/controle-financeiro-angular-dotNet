@@ -8,26 +8,33 @@ import { NovaFuncaoComponent } from './components/Funcao/nova-funcao/nova-funcao
 import { EditarFuncaoComponent } from './components/Funcao/editar-funcao/editar-funcao.component';
 import { RegisterUsuarioComponent } from './components/Usuario/register-usuario/register-usuario.component';
 import { LoginUsuarioComponent } from './components/Usuario/login-usuario/login-usuario.component';
+import { DashboardComponent } from './components/Dashboard/dashboard/dashboard.component';
 
 
 const routes: Routes = [
   {
-    path: 'categorias/listar', component: ListarCategoriasComponent
-  },
-  {
-    path: 'categorias/nova', component: NovaCategoriaComponent
-  },
-  {
-    path: 'categorias/editar/:id', component: EditarCategoriaComponent
-  },
-  {
-    path: 'funcoes/listar', component: ListarFuncoesComponent
-  },
-  {
-    path: 'funcoes/nova', component: NovaFuncaoComponent
-  },
-  {
-    path: 'funcoes/editar/:id', component: EditarFuncaoComponent
+    path: '',
+    component: DashboardComponent,
+    children: [
+      {
+        path: 'categorias/listar', component: ListarCategoriasComponent
+      },
+      {
+        path: 'categorias/nova', component: NovaCategoriaComponent
+      },
+      {
+        path: 'categorias/editar/:id', component: EditarCategoriaComponent
+      },
+      {
+        path: 'funcoes/listar', component: ListarFuncoesComponent
+      },
+      {
+        path: 'funcoes/nova', component: NovaFuncaoComponent
+      },
+      {
+        path: 'funcoes/editar/:id', component: EditarFuncaoComponent
+      },
+    ]
   },
   {
     path: 'usuarios/registrar', component: RegisterUsuarioComponent

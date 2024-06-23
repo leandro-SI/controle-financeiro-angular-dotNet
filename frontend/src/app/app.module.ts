@@ -26,6 +26,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { NgxMaskModule } from 'ngx-mask';
 import { JwtModule } from '@auth0/angular-jwt';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatListModule} from '@angular/material/list';
+import {MatToolbarModule} from '@angular/material/toolbar';
 
 
 //services
@@ -47,6 +50,8 @@ import { DialogExcluirFuncaoComponent } from './components/Funcao/dialog-excluir
 import { RegisterUsuarioComponent } from './components/Usuario/register-usuario/register-usuario.component';
 import { LoginUsuarioComponent } from './components/Usuario/login-usuario/login-usuario.component';
 import { environment } from 'src/environments/environment';
+import { DashboardComponent } from './components/Dashboard/dashboard/dashboard.component';
+import { HeaderComponent } from './components/Dashboard/header/header.component';
 
 export function GetTokenUser() {
   return localStorage.getItem('TokenUsuario');
@@ -64,7 +69,9 @@ export function GetTokenUser() {
     EditarFuncaoComponent,
     DialogExcluirFuncaoComponent,
     RegisterUsuarioComponent,
-    LoginUsuarioComponent
+    LoginUsuarioComponent,
+    DashboardComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
@@ -89,6 +96,9 @@ export function GetTokenUser() {
     MatSnackBarModule,
     MatProgressBarModule,
     FlexLayoutModule,
+    MatSidenavModule,
+    MatListModule,
+    MatToolbarModule,
     JwtModule.forRoot({
       config: {
         tokenGetter: GetTokenUser,

@@ -9,7 +9,7 @@
         <h2 class="titulo" >Funções Cadastradas</h2>
       </mat-grid-tile>
       <mat-grid-tile>
-        <button mat-stroked-button color="primary" routerLink="/funcoes/nova">Nova Função</button>
+        <button class="btn-novo" mat-stroked-button color="primary" routerLink="/funcoes/nova">Nova Função</button>
       </mat-grid-tile>
     </mat-grid-list>
   </div>
@@ -46,6 +46,7 @@
 
     <tr mat-header-row *matHeaderRowDef="displayColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayColumns" ></tr>
+
   </table>
 
   <mat-paginator [pageSizeOptions]="[5, 10, 15, 20]" showFirstLastButtons >

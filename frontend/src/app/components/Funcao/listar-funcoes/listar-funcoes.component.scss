@@ -18,7 +18,7 @@
 
 .titulo {
   position: absolute;
-  margin-left: 5px;
+  left: 5px;
 }
 
 .divAutoCompleteInput {
@@ -30,6 +30,11 @@
   width: 500px;
 }
 
-mat-form-field.mat-form-field {
+.btn-novo {
+  position: absolute;
+  right: 5px;
+}
+
+mat-form-field {
   width: 300px;
 }
