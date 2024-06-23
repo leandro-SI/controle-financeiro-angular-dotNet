@@ -1,7 +1,6 @@
 ﻿using ControleFinanceiro.Application.Dtos;
 using ControleFinanceiro.Application.Interfaces;
-using ControleFinanceiro.Domain.Entities;
-using Microsoft.AspNetCore.Http;
+using ControleFinanceiro.Domain.Account;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
@@ -12,10 +11,12 @@ namespace ControleFinanceiro.API.Controllers
     public class UsuarioController : ControllerBase
     {
         private readonly IUsuarioService _usuarioService;
+        private readonly IAuthenticate _authenticate;
 
-        public UsuarioController(IUsuarioService usuarioService)
+        public UsuarioController(IUsuarioService usuarioService, IAuthenticate authenticate)
         {
             _usuarioService = usuarioService;
+            _authenticate = authenticate;
         }
 
         [HttpGet("get/{id}")]
@@ -50,33 +51,30 @@ namespace ControleFinanceiro.API.Controllers
         [HttpPost("registrar")]
         public async Task<IActionResult> Registrar([FromBody] RegisterDTO registerDTO)
         {
-            var usuarioDto = new UsuarioDTO
-            {
-                UserName = registerDTO.NomeUsuario,
-                Email = registerDTO.Email,
-                PasswordHash = registerDTO.Senha,
-                CPF = registerDTO.CPF,
-                Profissao = registerDTO.Profissao,
-                Foto = registerDTO.Foto
-            };
 
             string funcao = "Administrador";
 
             if (await _usuarioService.GetQuantidade() > 0)
                 funcao = "Usuario";
 
-            var usuarioCriado = await _usuarioService.CriarUsuario(usuarioDto, registerDTO.Senha);
+            var result = await _usuarioService.CriarUsuario(registerDTO, registerDTO.Senha);
 
-            if (usuarioCriado.Succeeded)
+            if (result)
             {
-                usuarioDto.SecurityStamp = Guid.NewGuid().ToString();
-                await _usuarioService.VincularUsuarioFuncao(usuarioDto, funcao);
-                //await _usuarioService.LogarUsuario(usuarioDto, false);
+                var usuario = await _usuarioService.GetByEmail(registerDTO.Email);
+                usuario.SecurityStamp = Guid.NewGuid().ToString();
+
+                await _usuarioService.VincularUsuarioFuncao(usuario, funcao);
+
+                var tokenUsuario = _usuarioService.GerarToken(usuario, funcao);
+
+                await _usuarioService.LogarUsuario(usuario, false);
 
                 return Ok(new
                 {
-                    email = usuarioDto.Email,
-                    usuarioId = usuarioDto.Id,
+                    email = usuario.Email,
+                    usuarioId = usuario.Id,
+                    token = tokenUsuario,
                     mensagem = "Usuário registrado com sucesso."
                 });
             }
@@ -98,12 +96,16 @@ namespace ControleFinanceiro.API.Controllers
                 PasswordHasher<UsuarioDTO> passwordHasher = new PasswordHasher<UsuarioDTO>();
                 if (passwordHasher.VerifyHashedPassword(usuario, usuario.PasswordHash, loginDto.Senha) != PasswordVerificationResult.Failed)
                 {
+                    var funcoesUsuario = await _usuarioService.GetFuncoes(usuario);
+                    var tokenUsuario = _usuarioService.GerarToken(usuario, funcoesUsuario.First());
+
                     await _usuarioService.LogarUsuario(usuario, false);
 
                     return Ok(new
                     {
                         email = usuario.Email,
-                        usuarioId = usuario.Id
+                        usuarioId = usuario.Id,
+                        token = tokenUsuario
                     });
                 }
                 return NotFound("Usuário inválido.");

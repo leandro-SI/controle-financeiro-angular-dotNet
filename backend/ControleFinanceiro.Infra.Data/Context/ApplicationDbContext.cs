@@ -1,4 +1,5 @@
 ﻿using ControleFinanceiro.Domain.Entities;
+using ControleFinanceiro.Infra.Data.EntitiesMapeamentos;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection.Emit;
@@ -24,7 +25,15 @@ namespace ControleFinanceiro.Infra.Data.Context
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
-            builder.ApplyConfigurationsFromAssembly(typeof(ApplicationDbContext).Assembly);
+            builder.ApplyConfiguration(new CartaoMap());
+            builder.ApplyConfiguration(new CategoriaMap());
+            builder.ApplyConfiguration(new DespesaMap());
+            builder.ApplyConfiguration(new FuncaoMap());
+            builder.ApplyConfiguration(new GanhoMap());
+            builder.ApplyConfiguration(new MesMap());
+            builder.ApplyConfiguration(new TipoMap());
+            builder.ApplyConfiguration(new UsuarioMap());
+            //builder.ApplyConfigurationsFromAssembly(typeof(ApplicationDbContext).Assembly);
         }
 
 

@@ -3,9 +3,11 @@ using ControleFinanceiro.Application.Interfaces;
 using ControleFinanceiro.Application.Mappings;
 using ControleFinanceiro.Application.Services;
 using ControleFinanceiro.Application.Validations;
+using ControleFinanceiro.Domain.Account;
 using ControleFinanceiro.Domain.Entities;
 using ControleFinanceiro.Domain.Interfaces;
 using ControleFinanceiro.Infra.Data.Context;
+using ControleFinanceiro.Infra.Data.Identity;
 using ControleFinanceiro.Infra.Data.Repositories;
 using FluentValidation;
 using FluentValidation.AspNetCore;
@@ -13,11 +15,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Microsoft.Extensions.Options;
 
 namespace ControleFinanceiro.Infra.IoC
 {
@@ -28,7 +26,11 @@ namespace ControleFinanceiro.Infra.IoC
         {
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(configuration.GetConnectionString("DefaultConnection"
-                ), b => b.MigrationsAssembly(typeof(ApplicationDbContext).Assembly.FullName)));
+                ), b => b.MigrationsAssembly(typeof(ApplicationDbContext).Assembly.FullName))
+                .UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking));
+
+
+            services.AddIdentity<Usuario, Funcao>().AddEntityFrameworkStores<ApplicationDbContext>().AddDefaultTokenProviders();
 
             services.Configure<IdentityOptions>(options =>
             {
@@ -40,15 +42,16 @@ namespace ControleFinanceiro.Infra.IoC
                 options.Password.RequiredUniqueChars = 0;
             });
 
+
             services.AddFluentValidationAutoValidation();
             services.AddFluentValidationClientsideAdapters();
+
+            services.AddScoped<IAuthenticate, AuthenticateService>();
 
             services.AddTransient<IValidator<CategoriaDTO>, CategoriaValidator>();
             services.AddTransient<IValidator<FuncaoDTO>, FuncaoValidator>();
             services.AddTransient<IValidator<RegisterDTO>, RegisterValidator>();
             services.AddTransient<IValidator<LoginDTO>, LoginValidator>();
-
-            services.AddIdentity<Usuario, Funcao>().AddEntityFrameworkStores<ApplicationDbContext>();
 
             services.AddScoped<ICategoriaRepository, CategoriaRepository>();
             services.AddScoped<ICategoriaService, CategoriaService>();

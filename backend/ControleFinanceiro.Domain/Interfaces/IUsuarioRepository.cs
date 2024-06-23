@@ -11,10 +11,6 @@ namespace ControleFinanceiro.Domain.Interfaces
     public interface IUsuarioRepository : IGenericRepository<Usuario>
     {
         Task<int> GetQuantidade();
-        Task<IdentityResult> CriarUsuario(Usuario usuario, string senha);
-        Task VincularUsuarioFuncao(Usuario usuario, string funcao);
-        Task LogarUsuario(Usuario usuario, bool lembrar);
-        Task<Usuario> GetByEmail(string email);
 
     }
 }

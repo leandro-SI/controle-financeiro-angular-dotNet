@@ -69,8 +69,12 @@ export class RegisterUsuarioComponent implements OnInit {
 
       this.usuarioService.registrarUsuario(registroUsuario).subscribe(dados => {
         const emailUsuarioLogado = dados.email;
+        const usuarioId = dados.usuarioId;
+        const tokenUsuario = dados.token;
 
-        localStorage.setItem('EmailUsuarioLogado', emailUsuarioLogado)
+        localStorage.setItem('EmailUsuarioLogado', emailUsuarioLogado);
+        localStorage.setItem('UsuarioId', usuarioId);
+        localStorage.setItem('TokenUsuario', tokenUsuario);
 
         this.snackBar.open(dados.mensagem, null, {
           duration: 2000,
