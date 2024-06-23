@@ -40,10 +40,10 @@ namespace ControleFinanceiro.Infra.Data.Identity
         {
             var result = await _userManager.CreateAsync(usuario, senha);
 
-            if (result.Succeeded)
-            {
-                await _signInManager.SignInAsync(usuario, isPersistent: false);
-            }
+            //if (result.Succeeded)
+            //{
+            //    await _signInManager.SignInAsync(usuario, isPersistent: false);
+            //}
 
             _applicationDbContext.Entry(usuario).State = EntityState.Detached;
 

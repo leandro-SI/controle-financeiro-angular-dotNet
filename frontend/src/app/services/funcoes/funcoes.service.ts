@@ -1,12 +1,14 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { GetTokenUser } from 'src/app/app.module';
 import { Funcao } from 'src/app/models/Funcao';
 import { environment } from 'src/environments/environment';
 
 const httpOptions = {
   headers: new HttpHeaders ({
-    'Content-Type': 'application/json'
+    'Content-Type': 'application/json',
+    'Authorization': `Bearer ${localStorage.getItem('TokenUsuario')}`
   })
 };
 

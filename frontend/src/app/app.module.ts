@@ -25,6 +25,7 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { NgxMaskModule } from 'ngx-mask';
+import { JwtModule } from '@auth0/angular-jwt';
 
 
 //services
@@ -45,7 +46,11 @@ import { EditarFuncaoComponent } from './components/Funcao/editar-funcao/editar-
 import { DialogExcluirFuncaoComponent } from './components/Funcao/dialog-excluir-funcao/dialog-excluir-funcao.component';
 import { RegisterUsuarioComponent } from './components/Usuario/register-usuario/register-usuario.component';
 import { LoginUsuarioComponent } from './components/Usuario/login-usuario/login-usuario.component';
+import { environment } from 'src/environments/environment';
 
+export function GetTokenUser() {
+  return localStorage.getItem('TokenUsuario');
+}
 
 @NgModule({
   declarations: [
@@ -84,6 +89,13 @@ import { LoginUsuarioComponent } from './components/Usuario/login-usuario/login-
     MatSnackBarModule,
     MatProgressBarModule,
     FlexLayoutModule,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: GetTokenUser,
+        allowedDomains: [`${environment.applicationUrl}`],
+        disallowedRoutes: []
+      }
+    }),
     NgxMaskModule.forRoot(),
 
   ],
