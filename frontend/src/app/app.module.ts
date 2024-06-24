@@ -100,11 +100,12 @@ export function GetTokenUser() {
     MatSidenavModule,
     MatListModule,
     MatToolbarModule,
-
     JwtModule.forRoot({
       config: {
-        tokenGetter: GetTokenUser,
-        allowedDomains: ['http://localhost:5063/'],
+        tokenGetter: function  tokenGetter() {
+             return     localStorage.getItem('token');
+        },
+        allowedDomains: [`${environment.applicationUrl}`],
         disallowedRoutes: []
       }
     }),

@@ -1,5 +1,6 @@
 ﻿using ControleFinanceiro.Application.Dtos;
 using ControleFinanceiro.Application.Interfaces;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -8,6 +9,7 @@ namespace ControleFinanceiro.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     public class CategoriasController : ControllerBase
     {
         private readonly ICategoriaService _categoriasService;
@@ -17,7 +19,7 @@ namespace ControleFinanceiro.API.Controllers
             _categoriasService = categoriasService;
         }
 
-        [Authorize(Roles = "Administrador")]
+        //[Authorize(Roles = "Administrador")]
         [HttpGet("get-all")]
         public async Task<IActionResult> GetAll()
         {
