@@ -8,7 +8,7 @@ import { environment } from 'src/environments/environment';
 const httpOptions = {
   headers: new HttpHeaders ({
     'Content-Type': 'application/json',
-    'Authorization': `Bearer ${localStorage.getItem('TokenUsuario')}`
+    'Authorization': `Bearer ${localStorage.getItem('token')}`
   })
 };
 

@@ -19,7 +19,7 @@ const routes: Routes = [
     canActivate: [AuthGuardService],
     children: [
       {
-        path: 'categorias/listar', component: ListarCategoriasComponent
+        path: 'categorias/listar', component: ListarCategoriasComponent, canActivate: [AuthGuardService]
       },
       {
         path: 'categorias/nova', component: NovaCategoriaComponent

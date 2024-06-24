@@ -7,7 +7,7 @@ import { environment } from 'src/environments/environment';
 const httpOptions = {
   headers: new HttpHeaders ({
     'Content-Type': 'application/json',
-    'Authorization': `Bearer ${localStorage.getItem('TokenUsuario')}`
+    'Authorization': `Bearer ${localStorage.getItem('token')}`
   })
 };
 
@@ -19,8 +19,7 @@ export class CategoriasService {
   constructor(private http: HttpClient) { }
 
   getAll() : Observable<Categoria[]> {
-    const headers = new HttpHeaders().set('Authorization', `Bearer ${localStorage.getItem('TokenUsuario')}`);
-    return this.http.get<Categoria[]>(`${environment.urlApi}Categorias/get-all`, { headers })
+    return this.http.get<Categoria[]>(`${environment.urlApi}Categorias/get-all`)
   }
 
   getById(id: number) : Observable<Categoria> {

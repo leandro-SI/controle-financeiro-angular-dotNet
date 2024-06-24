@@ -14,7 +14,7 @@ constructor(private jwtHelper: JwtHelperService,
   private router: Router) { }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> {
-    const token = localStorage.getItem('TokenUsuario');
+    const token = localStorage.getItem('token');
 
     if (token && !this.jwtHelper.isTokenExpired(token)) {
       return true;
@@ -25,7 +25,7 @@ constructor(private jwtHelper: JwtHelperService,
   }
 
   VerificarAdministrador() : boolean {
-    const token = localStorage.getItem('TokenUsuario');
+    const token = localStorage.getItem('token');
     console.log('Role: ', jwtDecode<MyToken>(token).role)
     if (token != null) {
       const tokenUsuario = jwtDecode<MyToken>(token);

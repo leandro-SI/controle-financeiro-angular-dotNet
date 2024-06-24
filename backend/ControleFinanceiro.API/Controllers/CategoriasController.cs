@@ -17,7 +17,7 @@ namespace ControleFinanceiro.API.Controllers
             _categoriasService = categoriasService;
         }
 
-        [Authorize(Roles = "Usuario")]
+        [Authorize(Roles = "Administrador")]
         [HttpGet("get-all")]
         public async Task<IActionResult> GetAll()
         {

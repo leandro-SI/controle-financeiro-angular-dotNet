@@ -55,7 +55,7 @@ import { DashboardComponent } from './components/Dashboard/dashboard/dashboard.c
 import { HeaderComponent } from './components/Dashboard/header/header.component';
 
 export function GetTokenUser() {
-  return localStorage.getItem('TokenUsuario');
+  return localStorage.getItem('token');
 }
 
 @NgModule({
