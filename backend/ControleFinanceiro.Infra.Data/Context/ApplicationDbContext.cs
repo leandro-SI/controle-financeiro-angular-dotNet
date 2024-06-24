@@ -2,7 +2,6 @@
 using ControleFinanceiro.Infra.Data.EntitiesMapeamentos;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using System.Reflection.Emit;
 
 namespace ControleFinanceiro.Infra.Data.Context
 {

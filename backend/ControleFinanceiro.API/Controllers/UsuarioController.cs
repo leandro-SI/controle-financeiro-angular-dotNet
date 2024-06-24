@@ -1,8 +1,15 @@
 ﻿using ControleFinanceiro.Application.Dtos;
 using ControleFinanceiro.Application.Interfaces;
 using ControleFinanceiro.Domain.Account;
+using ControleFinanceiro.Domain.Entities;
+using ControleFinanceiro.Infra.Data.Identity;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.IdentityModel.Tokens;
+using System;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Text;
 
 namespace ControleFinanceiro.API.Controllers
 {
@@ -12,11 +19,13 @@ namespace ControleFinanceiro.API.Controllers
     {
         private readonly IUsuarioService _usuarioService;
         private readonly IAuthenticate _authenticate;
+        private readonly IConfiguration _configuration;
 
-        public UsuarioController(IUsuarioService usuarioService, IAuthenticate authenticate)
+        public UsuarioController(IUsuarioService usuarioService, IAuthenticate authenticate, IConfiguration configuration)
         {
             _usuarioService = usuarioService;
             _authenticate = authenticate;
+            _configuration = configuration;
         }
 
         [HttpGet("get/{id}")]
@@ -66,7 +75,7 @@ namespace ControleFinanceiro.API.Controllers
 
                 await _usuarioService.VincularUsuarioFuncao(usuario, funcao);
 
-                var tokenUsuario = _usuarioService.GerarToken(usuario, funcao);
+                var tokenUsuario = TokenService.GerarToken(usuario.UserName, funcao, _configuration["Jwt:SecretKey"]);
 
                 await _usuarioService.LogarUsuario(usuario, false);
 
@@ -88,7 +97,6 @@ namespace ControleFinanceiro.API.Controllers
             if (loginDto == null)
                 return NotFound("Usuario ou senha inválidos.");
 
-
             var usuario = await _usuarioService.GetByEmail(loginDto.Email);
 
             if (usuario != null)
@@ -97,7 +105,8 @@ namespace ControleFinanceiro.API.Controllers
                 if (passwordHasher.VerifyHashedPassword(usuario, usuario.PasswordHash, loginDto.Senha) != PasswordVerificationResult.Failed)
                 {
                     var funcoesUsuario = await _usuarioService.GetFuncoes(usuario);
-                    var tokenUsuario = _usuarioService.GerarToken(usuario, funcoesUsuario.First());
+
+                    var tokenUsuario = TokenService.GerarToken(usuario.UserName, funcoesUsuario.First(), _configuration["Jwt:SecretKey"]);
 
                     await _usuarioService.LogarUsuario(usuario, false);
 

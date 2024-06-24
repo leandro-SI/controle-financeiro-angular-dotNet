@@ -8,6 +8,7 @@ namespace ControleFinanceiro.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize(Roles = "Administrador")]
     public class CategoriasController : ControllerBase
     {
         private readonly ICategoriaService _categoriasService;
@@ -17,7 +18,6 @@ namespace ControleFinanceiro.API.Controllers
             _categoriasService = categoriasService;
         }
 
-        [Authorize(Roles = "Administrador")]
         [HttpGet("get-all")]
         public async Task<IActionResult> GetAll()
         {
@@ -29,7 +29,6 @@ namespace ControleFinanceiro.API.Controllers
             return Ok(categorias);
         }
 
-        [Authorize(Roles = "Administrador")]
         [HttpGet("get-by-id/{id}")]
         public async Task<IActionResult> Get(long id)
         {
@@ -41,7 +40,6 @@ namespace ControleFinanceiro.API.Controllers
             return Ok(categoria);
         }
         
-        [Authorize(Roles = "Administrador")]
         [HttpPost("create")]
         public async Task<IActionResult> Create([FromBody] CategoriaDTO categoriaDTO)
         {
@@ -53,7 +51,6 @@ namespace ControleFinanceiro.API.Controllers
             return Ok(new { mensagem = $"Categoria {categoriaDTO.Nome} criada com sucesso." });
         }
 
-        [Authorize(Roles = "Administrador")]
         [HttpPut("update/{id}")]
         public async Task<IActionResult> Update(long id, [FromBody] CategoriaDTO categoriaDTO)
         {
@@ -68,7 +65,6 @@ namespace ControleFinanceiro.API.Controllers
             return Ok( new { mensagem = $"Categoria {categoriaDTO.Nome} atualizada com sucesso." });
         }
 
-        [Authorize(Roles = "Administrador")]
         [HttpDelete("delete/{id}")]
         public async Task<IActionResult> Delete(long id)
         {
@@ -82,7 +78,6 @@ namespace ControleFinanceiro.API.Controllers
             return Ok(new { mensagem = $"Categoria {categoriaDto.Nome} excluida com sucesso." });
         }
 
-        [Authorize(Roles = "Administrador")]
         [HttpGet("filtrar/{nome}")]
         public async Task<IActionResult> Filtrar(string nome)
         {
@@ -93,5 +88,7 @@ namespace ControleFinanceiro.API.Controllers
 
             return Ok(categorias);
         }
+
+
     }
 }

@@ -7,6 +7,7 @@ using ControleFinanceiro.Domain.Entities;
 using ControleFinanceiro.Domain.Interfaces;
 using ControleFinanceiro.Infra.Data.Identity;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -85,12 +86,6 @@ namespace ControleFinanceiro.Application.Services
             return _mapper.Map<UsuarioDTO>(entity);
         }
 
-        public string GerarToken(UsuarioDTO usuarioDTO, string funcao)
-        {
-            var usuario = _mapper.Map<Usuario>(usuarioDTO);
-
-            return TokenService.GerarToken(usuario, funcao);
-        }
 
     }
 }

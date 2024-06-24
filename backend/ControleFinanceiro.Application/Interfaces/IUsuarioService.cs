@@ -1,6 +1,7 @@
 ﻿using ControleFinanceiro.Application.Dtos;
 using ControleFinanceiro.Domain.Entities;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,6 +19,5 @@ namespace ControleFinanceiro.Application.Interfaces
         Task<bool> CriarUsuario(RegisterDTO registerDto, string senha);
         Task VincularUsuarioFuncao(UsuarioDTO usuarioDto, string funcao);
         Task LogarUsuario(UsuarioDTO usuarioDto, bool lembrar);
-        string GerarToken(UsuarioDTO usuarioDTO, string funcao);
     }
 }

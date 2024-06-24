@@ -33,17 +33,12 @@ namespace ControleFinanceiro.Infra.Data.Identity
         {
             await _signInManager.SignInAsync(usuario, false);
 
-            _applicationDbContext.Entry(usuario).State = EntityState.Detached;
+            //_applicationDbContext.Entry(usuario).State = EntityState.Detached;
         }
 
         public async Task<bool> RegisterUser(Usuario usuario, string senha)
         {
             var result = await _userManager.CreateAsync(usuario, senha);
-
-            //if (result.Succeeded)
-            //{
-            //    await _signInManager.SignInAsync(usuario, isPersistent: false);
-            //}
 
             _applicationDbContext.Entry(usuario).State = EntityState.Detached;
 
