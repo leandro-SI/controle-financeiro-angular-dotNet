@@ -1,18 +1,9 @@
 ﻿using AutoMapper;
-using ControleFinanceiro.Application.Authentications;
 using ControleFinanceiro.Application.Dtos;
 using ControleFinanceiro.Application.Interfaces;
 using ControleFinanceiro.Domain.Account;
 using ControleFinanceiro.Domain.Entities;
 using ControleFinanceiro.Domain.Interfaces;
-using ControleFinanceiro.Infra.Data.Identity;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.Extensions.Configuration;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ControleFinanceiro.Application.Services
 {
