@@ -4,15 +4,19 @@
   <mat-sidenav mode="side" opened >
     <mat-list style="cursor: pointer;" >
 
-      <mat-list-item [routerLink]="['/categorias/listar']" >
-        <mat-icon>reorder</mat-icon> Categorias
-      </mat-list-item>
+      <div *ngIf="isAdministrador">
+        <mat-list-item [routerLink]="['/categorias/listar']" >
+          <mat-icon>reorder</mat-icon> Categorias
+        </mat-list-item>
+        <mat-divider></mat-divider>
+      </div>
 
-      <mat-divider></mat-divider>
-
-      <mat-list-item [routerLink]="['/funcoes/listar']" >
-        <mat-icon>supervised_user_circle</mat-icon> Funções
-      </mat-list-item>
+      <div *ngIf="isAdministrador">
+        <mat-list-item [routerLink]="['/funcoes/listar']" >
+          <mat-icon>supervised_user_circle</mat-icon> Funções
+        </mat-list-item>
+        <mat-divider></mat-divider>
+      </div>
 
     </mat-list>
   </mat-sidenav>

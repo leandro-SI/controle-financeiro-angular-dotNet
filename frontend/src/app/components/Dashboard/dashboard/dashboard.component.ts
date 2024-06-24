@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthGuardService } from 'src/app/services/auth/auth-guard.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor() { }
+  isAdministrador: boolean;
+
+  constructor(private authGuard: AuthGuardService) { }
 
   ngOnInit() {
+    this.isAdministrador = this.authGuard.VerificarAdministrador();
   }
 
 }

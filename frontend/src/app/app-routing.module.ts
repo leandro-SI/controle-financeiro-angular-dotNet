@@ -9,12 +9,14 @@ import { EditarFuncaoComponent } from './components/Funcao/editar-funcao/editar-
 import { RegisterUsuarioComponent } from './components/Usuario/register-usuario/register-usuario.component';
 import { LoginUsuarioComponent } from './components/Usuario/login-usuario/login-usuario.component';
 import { DashboardComponent } from './components/Dashboard/dashboard/dashboard.component';
+import { AuthGuardService } from './services/auth/auth-guard.service';
 
 
 const routes: Routes = [
   {
     path: '',
     component: DashboardComponent,
+    canActivate: [AuthGuardService],
     children: [
       {
         path: 'categorias/listar', component: ListarCategoriasComponent

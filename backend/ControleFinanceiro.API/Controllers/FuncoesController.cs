@@ -1,13 +1,13 @@
 ﻿using ControleFinanceiro.Application.Dtos;
 using ControleFinanceiro.Application.Interfaces;
-using ControleFinanceiro.Application.Services;
-using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ControleFinanceiro.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize(Roles = "Administrador")]
     public class FuncoesController : ControllerBase
     {
         private readonly IFuncaoService _funcaoService;

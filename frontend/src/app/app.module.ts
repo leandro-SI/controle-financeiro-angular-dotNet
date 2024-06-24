@@ -26,9 +26,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { NgxMaskModule } from 'ngx-mask';
 import { JwtModule } from '@auth0/angular-jwt';
-import {MatSidenavModule} from '@angular/material/sidenav';
-import {MatListModule} from '@angular/material/list';
-import {MatToolbarModule} from '@angular/material/toolbar';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatListModule } from '@angular/material/list';
+import { MatToolbarModule } from '@angular/material/toolbar';
 
 
 //services
@@ -36,6 +36,7 @@ import { TiposService } from './services/tipos/tipos.service';
 import { CategoriasService } from './services/categorias/categorias.service';
 import { FuncoesService } from './services/funcoes/funcoes.service';
 import { UsuariosService } from './services/usuarios/Usuarios.service';
+import { AuthGuardService } from './services/auth/auth-guard.service';
 
 
 //componentes
@@ -99,10 +100,11 @@ export function GetTokenUser() {
     MatSidenavModule,
     MatListModule,
     MatToolbarModule,
+
     JwtModule.forRoot({
       config: {
         tokenGetter: GetTokenUser,
-        allowedDomains: [`${environment.applicationUrl}`],
+        allowedDomains: ['http://localhost:5063/'],
         disallowedRoutes: []
       }
     }),
@@ -114,7 +116,8 @@ export function GetTokenUser() {
     TiposService,
     CategoriasService,
     FuncoesService,
-    UsuariosService
+    UsuariosService,
+    AuthGuardService
   ],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]

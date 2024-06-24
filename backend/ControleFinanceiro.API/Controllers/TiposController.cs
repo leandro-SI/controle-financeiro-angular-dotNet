@@ -1,11 +1,12 @@
 ﻿using ControleFinanceiro.Application.Interfaces;
-using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ControleFinanceiro.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class TiposController : ControllerBase
     {
         private readonly ITipoService _tiposService;

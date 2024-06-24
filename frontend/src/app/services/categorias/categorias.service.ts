@@ -19,11 +19,12 @@ export class CategoriasService {
   constructor(private http: HttpClient) { }
 
   getAll() : Observable<Categoria[]> {
-    return this.http.get<Categoria[]>(`${environment.urlApi}Categorias/get-all`)
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${localStorage.getItem('TokenUsuario')}`);
+    return this.http.get<Categoria[]>(`${environment.urlApi}Categorias/get-all`, { headers })
   }
 
   getById(id: number) : Observable<Categoria> {
-    return this.http.get<Categoria>(`${environment.urlApi}Categorias/get-by-id/${id}`);
+    return this.http.get<Categoria>(`${environment.urlApi}Categorias/get-by-id/${id}`, httpOptions);
   }
 
   create(categoria: Categoria) : Observable<any> {

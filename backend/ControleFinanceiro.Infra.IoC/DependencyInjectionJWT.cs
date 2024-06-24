@@ -14,6 +14,19 @@ namespace ControleFinanceiro.Infra.IoC
         {
             var key = Encoding.ASCII.GetBytes(Settings.SecretKey);
 
+            //services.AddCors(options =>
+            //{
+            //    options.AddPolicy("AllowAll",
+            //        builder =>
+            //        {
+            //            builder.AllowAnyOrigin()
+            //                   .AllowAnyMethod()
+            //                   .AllowAnyHeader();
+            //        });
+            //});
+
+            services.AddCors();
+
             services.AddAuthentication(options =>
             {
                 options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
