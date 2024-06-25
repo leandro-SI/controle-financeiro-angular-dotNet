@@ -4,7 +4,6 @@ using ControleFinanceiro.Application.Mappings;
 using ControleFinanceiro.Application.Services;
 using ControleFinanceiro.Application.Validations;
 using ControleFinanceiro.Domain.Account;
-using ControleFinanceiro.Domain.Entities;
 using ControleFinanceiro.Domain.Interfaces;
 using ControleFinanceiro.Infra.Data.Context;
 using ControleFinanceiro.Infra.Data.Identity;
@@ -15,7 +14,6 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Options;
 
 namespace ControleFinanceiro.Infra.IoC
 {
@@ -59,6 +57,8 @@ namespace ControleFinanceiro.Infra.IoC
             services.AddScoped<IFuncaoService, FuncaoService>();
             services.AddScoped<IUsuarioRepository, UsuarioRepository>();
             services.AddScoped<IUsuarioService, UsuarioService>();
+            services.AddScoped<ICartaoRepository, CartaoRepository>();
+            services.AddScoped<ICartaoService, CartaoService>();
 
             services.AddAutoMapper(typeof(DomainToDTOMappingProfile));
 

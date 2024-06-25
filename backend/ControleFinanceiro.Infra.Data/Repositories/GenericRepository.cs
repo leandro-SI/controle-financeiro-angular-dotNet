@@ -26,6 +26,12 @@ namespace ControleFinanceiro.Infra.Data.Repositories
             return entity;
         }
 
+        public async Task<T> FindById(long id)
+        {
+            var entity = await _context.Set<T>().FindAsync(id);
+            return entity;
+        }
+
         public async Task Create(T item)
         {
             await _context.Set<T>().AddAsync(item);
@@ -33,6 +39,13 @@ namespace ControleFinanceiro.Infra.Data.Repositories
         }
 
         public async Task Delete(int id)
+        {
+            var entity = await FindById(id);
+            _context.Set<T>().Remove(entity);
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task Delete(long id)
         {
             var entity = await FindById(id);
             _context.Set<T>().Remove(entity);
