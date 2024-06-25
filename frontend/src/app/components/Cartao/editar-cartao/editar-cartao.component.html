@@ -1,0 +1,107 @@
+<div class="divCard" *ngIf="!formulario">
+  <mat-progress-bar mode="buffer" ></mat-progress-bar>
+</div>
+
+<div class="divCard" *ngIf="formulario">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title><h3>Atualizar o cartão: {{nomeCartao}}</h3></mat-card-title>
+    </mat-card-header>
+    <form [formGroup]="formulario" (ngSubmit)="AtualizarCartao()">
+
+      <div class="card-erros" *ngIf="erros.length > 0">
+        <mat-card>
+          <mat-card-header>
+            <mat-card-title>Algo deu errado!</mat-card-title>
+          </mat-card-header>
+          <mat-divider></mat-divider>
+          <mat-card-content>
+            <div class="div-erros">
+              <h4 class="texto-erros" *ngFor="let erro of erros" >
+                {{erro}}
+              </h4>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </div>
+
+      <mat-card-content>
+        <div>
+          <mat-form-field>
+            <mat-label>Nome</mat-label>
+            <input
+              matInput type="text"
+              formControlName="nome"
+              placeholder="Digite o nome do cartão"
+              required
+              minlength="1"
+              maxlength="20"
+              >
+              <mat-error *ngIf="propriedade.nome.touched && propriedade.nome.invalid">
+                <sup>*</sup> Digite o nome do cartão
+              </mat-error>
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field>
+            <mat-label>Bandeira</mat-label>
+            <input
+              matInput
+              type="text"
+              formControlName="bandeira"
+              placeholder="Digite a bandeira"
+              required
+              minlength="1"
+              maxlength="15"
+            >
+            <mat-error *ngIf="propriedade.bandeira.touched && propriedade.bandeira.invalid">
+              <sup>*</sup> Digite a bandeira
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field>
+            <mat-label>Número</mat-label>
+            <input
+              matInput
+              type="text"
+              formControlName="numero"
+              placeholder="Digite o numero"
+              required
+              minlength="1"
+              maxlength="20"
+              mask="0000 0000 0000 0000"
+            >
+            <mat-error *ngIf="propriedade.numero.touched && propriedade.numero.invalid">
+              <sup>*</sup> Digite o numero
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field>
+            <mat-label>Limite</mat-label>
+            <input
+              matInput
+              type="number"
+              formControlName="limite"
+              placeholder="Digite o limite"
+              required
+            >
+            <mat-error *ngIf="propriedade.limite.touched && propriedade.limite.invalid">
+              <sup>*</sup> Digite o limite
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </mat-card-content>
+
+      <mat-divider></mat-divider>
+
+      <mat-card-actions>
+        <div>
+          <button type="submit" mat-stroked-button color="primary" >Atualizar</button>
+          <button mat-stroked-button type="button" (click)="VoltarListagem()" >Voltar</button>
+        </div>
+      </mat-card-actions>
+    </form>
+  </mat-card>
+</div>
