@@ -103,7 +103,7 @@ export function GetTokenUser() {
     JwtModule.forRoot({
       config: {
         tokenGetter: function  tokenGetter() {
-             return     localStorage.getItem('token');
+          return localStorage.getItem('token');
         },
         allowedDomains: [`${environment.applicationUrl}`],
         disallowedRoutes: []
