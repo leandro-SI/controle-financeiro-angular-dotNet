@@ -7,6 +7,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 import { CartoesService } from 'src/app/services/cartoes/cartoes.service';
+import { DialogDeleteCartaoComponent } from '../dialog-delete-cartao/dialog-delete-cartao.component';
 
 @Component({
   selector: 'app-listar-cartoes',
@@ -51,6 +52,22 @@ export class ListarCartoesComponent implements OnInit {
 
   ExibirColunas() : string[] {
     return ['nome', 'bandeira', 'numero', 'limite', 'acoes']
+  }
+
+  AbrirDialog(cartaoId, nome): void {
+    this.dialog.open(DialogDeleteCartaoComponent, {
+      data: {
+        id: cartaoId,
+        nome: nome
+      }
+    }).afterClosed().subscribe(result => {
+      if (result === true) {
+        this.cartaoService.getByUserId(this.usuarioId).subscribe(dados => {
+          this.cartoes.data = dados;
+        })
+      }
+      this.displayColumns = this.ExibirColunas();
+    })
   }
 
   FiltrarNomes(nome: string) : string[] {
