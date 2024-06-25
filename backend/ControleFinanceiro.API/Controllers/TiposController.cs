@@ -4,9 +4,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace ControleFinanceiro.API.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize]
     public class TiposController : ControllerBase
     {
         private readonly ITipoService _tiposService;
