@@ -7,9 +7,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace ControleFinanceiro.API.Controllers
 {
+    //[Authorize]
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     public class CategoriasController : ControllerBase
     {
         private readonly ICategoriaService _categoriasService;
@@ -19,8 +19,9 @@ namespace ControleFinanceiro.API.Controllers
             _categoriasService = categoriasService;
         }
 
-        //[Authorize(Roles = "Administrador")]
+        
         [HttpGet("get-all")]
+        [Authorize(Roles = "Administrador")]
         public async Task<IActionResult> GetAll()
         {
             var categorias = await _categoriasService.GetAll();

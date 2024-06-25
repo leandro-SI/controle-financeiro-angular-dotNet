@@ -1,8 +1,22 @@
 export interface MyToken {
-  name: string;
+  primarysid: string;
+  unique_name: string;
   role: string;
-  jti: string;
   nbf: number;
   exp: number;
+  iss: string;
   iat: number;
+  aud: string;
 }
+
+// export interface MyToken {
+//   id: string;
+//   sub: string;
+//   email: string;
+//   name: string;
+//   role: string;
+//   jti: string;
+//   nbf: number;
+//   exp: number;
+//   iat: number;
+// }

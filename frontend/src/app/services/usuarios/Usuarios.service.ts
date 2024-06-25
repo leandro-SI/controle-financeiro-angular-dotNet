@@ -24,11 +24,11 @@ export class UsuariosService {
   }
 
   registrarUsuario(dadosRegistro: RegistroUsuario) : Observable<any> {
-    return this.http.post<RegistroUsuario>(`${environment.urlApi}Usuario/registrar`, dadosRegistro, httpOptions)
+    return this.http.post<RegistroUsuario>(`${environment.urlApi}Authentication/registrar`, dadosRegistro, httpOptions)
   }
 
   logarUsuario(dadosLogin: LoginUsuario): Observable<any> {
-    return this.http.post<RegistroUsuario>(`${environment.urlApi}Usuario/logar`, dadosLogin, httpOptions)
+    return this.http.post<RegistroUsuario>(`${environment.urlApi}Authentication/logar`, dadosLogin, httpOptions)
   }
 
 }

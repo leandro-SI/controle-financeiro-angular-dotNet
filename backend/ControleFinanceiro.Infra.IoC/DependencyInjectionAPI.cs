@@ -29,9 +29,6 @@ namespace ControleFinanceiro.Infra.IoC
                 ), b => b.MigrationsAssembly(typeof(ApplicationDbContext).Assembly.FullName))
                 .UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking));
 
-
-            services.AddIdentity<Usuario, Funcao>().AddEntityFrameworkStores<ApplicationDbContext>().AddDefaultTokenProviders();
-
             services.Configure<IdentityOptions>(options =>
             {
                 options.Password.RequireDigit = false;
@@ -40,12 +37,13 @@ namespace ControleFinanceiro.Infra.IoC
                 options.Password.RequireNonAlphanumeric = false;
                 options.Password.RequireUppercase = false;
                 options.Password.RequiredUniqueChars = 0;
+                options.SignIn.RequireConfirmedAccount = false;
             });
-
 
             services.AddFluentValidationAutoValidation();
             services.AddFluentValidationClientsideAdapters();
 
+            services.AddScoped<ITokenService, TokenService>();
             services.AddScoped<IAuthenticate, AuthenticateService>();
 
             services.AddTransient<IValidator<CategoriaDTO>, CategoriaValidator>();
@@ -63,8 +61,6 @@ namespace ControleFinanceiro.Infra.IoC
             services.AddScoped<IUsuarioService, UsuarioService>();
 
             services.AddAutoMapper(typeof(DomainToDTOMappingProfile));
-
-
 
             return services;
         }

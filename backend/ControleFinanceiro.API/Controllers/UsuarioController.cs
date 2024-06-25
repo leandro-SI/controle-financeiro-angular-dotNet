@@ -75,7 +75,8 @@ namespace ControleFinanceiro.API.Controllers
 
                 await _usuarioService.VincularUsuarioFuncao(usuario, funcao);
 
-                var tokenUsuario = TokenService.GerarToken(usuario.UserName, funcao, _configuration["Jwt:SecretKey"]);
+                //var tokenUsuario = TokenService.GerarToken(usuario.UserName, funcao, _configuration["Jwt:SecretKey"]);
+                //var tokenUsuario = GerarToken(usuario, funcao, _configuration["Jwt:SecretKey"]);
 
                 await _usuarioService.LogarUsuario(usuario, false);
 
@@ -83,7 +84,7 @@ namespace ControleFinanceiro.API.Controllers
                 {
                     email = usuario.Email,
                     usuarioId = usuario.Id,
-                    token = tokenUsuario,
+                    token = string.Empty,
                     mensagem = "Usuário registrado com sucesso."
                 });
             }
@@ -106,7 +107,9 @@ namespace ControleFinanceiro.API.Controllers
                 {
                     var funcoesUsuario = await _usuarioService.GetFuncoes(usuario);
 
-                    var tokenUsuario = TokenService.GerarToken(usuario.UserName, funcoesUsuario.First(), _configuration["Jwt:SecretKey"]);
+                    //var tokenUsuario = TokenService.GerarToken(usuario.UserName, funcoesUsuario.First(), _configuration["Jwt:SecretKey"]);
+                    //var tokenUsuario = GerarToken(usuario, funcoesUsuario.First(), _configuration["Jwt:SecretKey"]);
+
 
                     await _usuarioService.LogarUsuario(usuario, false);
 
@@ -114,7 +117,7 @@ namespace ControleFinanceiro.API.Controllers
                     {
                         email = usuario.Email,
                         usuarioId = usuario.Id,
-                        token = tokenUsuario
+                        token = string.Empty
                     });
                 }
                 return NotFound("Usuário inválido.");
@@ -123,6 +126,7 @@ namespace ControleFinanceiro.API.Controllers
 
             return NotFound("Usuário inválido.");
         }
+
 
     }
 }
