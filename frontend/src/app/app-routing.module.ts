@@ -10,6 +10,7 @@ import { RegisterUsuarioComponent } from './components/Usuario/register-usuario/
 import { LoginUsuarioComponent } from './components/Usuario/login-usuario/login-usuario.component';
 import { DashboardComponent } from './components/Dashboard/dashboard/dashboard.component';
 import { AuthGuardService } from './services/auth/auth-guard.service';
+import { NovoCartaoComponent } from './components/Cartao/novo-cartao/novo-cartao.component';
 
 
 const routes: Routes = [
@@ -35,6 +36,9 @@ const routes: Routes = [
       },
       {
         path: 'funcoes/editar/:id', component: EditarFuncaoComponent
+      },
+      {
+        path: 'cartoes/novo', component: NovoCartaoComponent
       },
     ]
   },

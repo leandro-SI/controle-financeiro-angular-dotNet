@@ -44,6 +44,20 @@ namespace ControleFinanceiro.API.Controllers
             return Ok(cartao);
         }
 
+        [HttpPost("create")]
+        public async Task<IActionResult> Create([FromBody] CartaoDTO cartaoDTO)
+        {
+            if (cartaoDTO == null)
+                return BadRequest("Invalid Data");
+
+            await _cartaoService.Create(cartaoDTO);
+
+            return Ok(new
+            {
+                mensagem = $"Cartão número {cartaoDTO.Numero} criado com sucesso."
+            });
+        }
+
         [HttpPut("update/{id}")]
         public async Task<IActionResult> Update(long id, [FromBody] CartaoDTO cartaoDTO)
         {

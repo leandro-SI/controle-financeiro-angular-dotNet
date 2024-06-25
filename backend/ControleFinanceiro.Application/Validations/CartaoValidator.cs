@@ -31,6 +31,10 @@ namespace ControleFinanceiro.Application.Validations
                 .MinimumLength(5).WithMessage("Use mais caracteres.")
                 .MaximumLength(20).WithMessage("Use menos caracteres.");
 
+            RuleFor(c => c.Limite)
+                .NotNull().WithMessage("Preencha o limite")
+                .NotEmpty().WithMessage("Preencha o limite");
+
 
         }
     }

@@ -37,6 +37,7 @@ import { CategoriasService } from './services/categorias/categorias.service';
 import { FuncoesService } from './services/funcoes/funcoes.service';
 import { UsuariosService } from './services/usuarios/Usuarios.service';
 import { AuthGuardService } from './services/auth/auth-guard.service';
+import { CartoesService } from './services/cartoes/cartoes.service';
 
 
 //componentes
@@ -53,6 +54,7 @@ import { LoginUsuarioComponent } from './components/Usuario/login-usuario/login-
 import { environment } from 'src/environments/environment';
 import { DashboardComponent } from './components/Dashboard/dashboard/dashboard.component';
 import { HeaderComponent } from './components/Dashboard/header/header.component';
+import { NovoCartaoComponent } from './components/Cartao/novo-cartao/novo-cartao.component';
 
 export function GetTokenUser() {
   return localStorage.getItem('token');
@@ -72,7 +74,8 @@ export function GetTokenUser() {
     RegisterUsuarioComponent,
     LoginUsuarioComponent,
     DashboardComponent,
-    HeaderComponent
+    HeaderComponent,
+    NovoCartaoComponent
   ],
   imports: [
     BrowserModule,
@@ -118,6 +121,7 @@ export function GetTokenUser() {
     CategoriasService,
     FuncoesService,
     UsuariosService,
+    CartoesService,
     AuthGuardService
   ],
   bootstrap: [AppComponent],
