@@ -3,6 +3,7 @@ using ControleFinanceiro.Application.Dtos;
 using ControleFinanceiro.Application.Interfaces;
 using ControleFinanceiro.Domain.Entities;
 using ControleFinanceiro.Domain.Interfaces;
+using ControleFinanceiro.Infra.Data.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -53,6 +54,14 @@ namespace ControleFinanceiro.Application.Services
         public async Task Delete(long id)
         {
             await _cartaoRepository.Delete(id);
+        }
+
+        public async Task<IEnumerable<CartaoDTO>> Filtrar(string nome)
+        {
+            var cartoes = await _cartaoRepository.Filtrar(nome);
+
+            return _mapper.Map<IEnumerable<CartaoDTO>>(cartoes).ToList();
+  
         }
     }
 }

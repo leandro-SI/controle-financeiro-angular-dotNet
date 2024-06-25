@@ -9,5 +9,6 @@ namespace ControleFinanceiro.Application.Interfaces
         Task Update(CartaoDTO cartaoDTO);
         Task Create(CartaoDTO cartaoDTO);
         Task Delete(long id);
+        Task<IEnumerable<CartaoDTO>> Filtrar(string nome);
     }
 }

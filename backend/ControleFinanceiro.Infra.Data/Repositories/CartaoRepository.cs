@@ -18,5 +18,11 @@ namespace ControleFinanceiro.Infra.Data.Repositories
         {
             return await _context.Cartoes.Where(c => c.UsuarioId == userId).ToListAsync();
         }
+
+        public async Task<IEnumerable<Cartao>> Filtrar(string nome)
+        {
+            return await _context.Cartoes
+                .Where(c => c.Nome.ToLower().Contains(nome.ToLower())).ToListAsync();
+        }
     }
 }

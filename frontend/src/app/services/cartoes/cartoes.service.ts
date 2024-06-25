@@ -22,8 +22,8 @@ export class CartoesService {
     return this.http.get<Cartao>(`${environment.urlApi}Cartao/get-by-id/${id}`, httpOptions);
   }
 
-  getByUserId(userId: number) : Observable<Cartao> {
-    return this.http.get<Cartao>(`${environment.urlApi}Cartao/get-by-user/${userId}`, httpOptions);
+  getByUserId(userId: string) : Observable<Cartao[]> {
+    return this.http.get<Cartao[]>(`${environment.urlApi}Cartao/get-by-user/${userId}`, httpOptions);
   }
 
   create(cartao: Cartao) : Observable<any> {
@@ -36,6 +36,11 @@ export class CartoesService {
 
   delete(id: number) : Observable<any> {
     return this.http.delete<Number>(`${environment.urlApi}Cartao/delete/${id}`, httpOptions);
+  }
+
+
+  filtrar(nome: string) : Observable<Cartao[]> {
+    return this.http.get<Cartao[]>(`${environment.urlApi}Cartao/filtrar/${nome}`)
   }
 
 }

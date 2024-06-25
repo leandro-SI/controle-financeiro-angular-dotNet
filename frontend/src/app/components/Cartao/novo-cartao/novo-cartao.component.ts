@@ -45,7 +45,7 @@ export class NovoCartaoComponent implements OnInit {
         horizontalPosition: 'right',
         verticalPosition: 'top'
       })
-      //this.router.navigate(['cartoes/listar']);
+      this.router.navigate(['cartoes/listar']);
     },
     (err) => {
       if (err.error.status === 400) {

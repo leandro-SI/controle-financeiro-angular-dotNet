@@ -55,6 +55,7 @@ import { environment } from 'src/environments/environment';
 import { DashboardComponent } from './components/Dashboard/dashboard/dashboard.component';
 import { HeaderComponent } from './components/Dashboard/header/header.component';
 import { NovoCartaoComponent } from './components/Cartao/novo-cartao/novo-cartao.component';
+import { ListarCartoesComponent } from './components/Cartao/listar-cartoes/listar-cartoes.component';
 
 export function GetTokenUser() {
   return localStorage.getItem('token');
@@ -75,7 +76,8 @@ export function GetTokenUser() {
     LoginUsuarioComponent,
     DashboardComponent,
     HeaderComponent,
-    NovoCartaoComponent
+    NovoCartaoComponent,
+    ListarCartoesComponent
   ],
   imports: [
     BrowserModule,
