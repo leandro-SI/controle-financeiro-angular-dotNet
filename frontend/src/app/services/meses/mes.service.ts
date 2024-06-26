@@ -7,12 +7,12 @@ import { environment } from 'src/environments/environment';
 @Injectable({
   providedIn: 'root'
 })
-export class MesService {
+export class MesesService {
 
 constructor(private http: HttpClient) { }
 
   getAll() : Observable<Mes[]> {
-    return this.http.get<Mes[]>(`${environment.applicationUrl}Mes`)
+    return this.http.get<Mes[]>(`${environment.applicationUrl}Mes/get-all`)
   }
 
 }

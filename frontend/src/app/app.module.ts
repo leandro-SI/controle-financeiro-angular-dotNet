@@ -38,7 +38,7 @@ import { FuncoesService } from './services/funcoes/funcoes.service';
 import { UsuariosService } from './services/usuarios/Usuarios.service';
 import { AuthGuardService } from './services/auth/auth-guard.service';
 import { CartoesService } from './services/cartoes/cartoes.service';
-import { MesService } from './services/meses/mes.service';
+import { MesesService } from './services/meses/mes.service';
 import { DespesasService } from './services/despesas/despesas.service';
 
 
@@ -131,7 +131,7 @@ export function GetTokenUser() {
     UsuariosService,
     CartoesService,
     AuthGuardService,
-    MesService,
+    MesesService,
     DespesasService
   ],
   bootstrap: [AppComponent],
