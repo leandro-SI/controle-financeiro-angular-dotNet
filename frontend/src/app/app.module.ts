@@ -60,6 +60,7 @@ import { NovoCartaoComponent } from './components/Cartao/novo-cartao/novo-cartao
 import { ListarCartoesComponent } from './components/Cartao/listar-cartoes/listar-cartoes.component';
 import { EditarCartaoComponent } from './components/Cartao/editar-cartao/editar-cartao.component';
 import { DialogDeleteCartaoComponent } from './components/Cartao/dialog-delete-cartao/dialog-delete-cartao.component';
+import { NovaDespesaComponent } from './components/Despesa/nova-despesa/nova-despesa.component';
 
 export function GetTokenUser() {
   return localStorage.getItem('token');
@@ -83,7 +84,8 @@ export function GetTokenUser() {
     NovoCartaoComponent,
     ListarCartoesComponent,
     EditarCartaoComponent,
-    DialogDeleteCartaoComponent
+    DialogDeleteCartaoComponent,
+    NovaDespesaComponent
   ],
   imports: [
     BrowserModule,

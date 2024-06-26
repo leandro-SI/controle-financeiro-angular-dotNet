@@ -13,6 +13,7 @@ import { AuthGuardService } from './services/auth/auth-guard.service';
 import { NovoCartaoComponent } from './components/Cartao/novo-cartao/novo-cartao.component';
 import { ListarCartoesComponent } from './components/Cartao/listar-cartoes/listar-cartoes.component';
 import { EditarCartaoComponent } from './components/Cartao/editar-cartao/editar-cartao.component';
+import { NovaDespesaComponent } from './components/Despesa/nova-despesa/nova-despesa.component';
 
 
 const routes: Routes = [
@@ -47,6 +48,9 @@ const routes: Routes = [
       },
       {
         path: 'cartoes/editar/:id', component: EditarCartaoComponent
+      },
+      {
+        path: 'despesas/nova', component: NovaDespesaComponent
       },
     ]
   },
