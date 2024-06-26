@@ -38,7 +38,6 @@ export class CartoesService {
     return this.http.delete<Number>(`${environment.urlApi}Cartao/delete/${id}`, httpOptions);
   }
 
-
   filtrar(nome: string) : Observable<Cartao[]> {
     return this.http.get<Cartao[]>(`${environment.urlApi}Cartao/filtrar/${nome}`)
   }

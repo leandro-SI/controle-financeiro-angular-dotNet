@@ -1,0 +1,18 @@
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Mes } from 'src/app/models/Mes';
+import { environment } from 'src/environments/environment';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class MesService {
+
+constructor(private http: HttpClient) { }
+
+  getAll() : Observable<Mes[]> {
+    return this.http.get<Mes[]>(`${environment.applicationUrl}Mes`)
+  }
+
+}

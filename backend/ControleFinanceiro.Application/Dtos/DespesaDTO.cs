@@ -11,16 +11,16 @@ namespace ControleFinanceiro.Application.Dtos
     {
         public long Id { get; set; }
         public long CartaoId { get; set; }
-        public Cartao Cartao { get; set; }
+        public CartaoDTO Cartao { get; set; }
         public string Descricao { get; set; }
         public long CategoriaId { get; set; }
-        public Categoria Categoria { get; set; }
+        public CategoriaDTO Categoria { get; set; }
         public decimal Valor { get; set; }
         public int Dia { get; set; }
         public long MesId { get; set; }
-        public Mes Mes { get; set; }
+        public MesDTO Mes { get; set; }
         public int Ano { get; set; }
         public string UsuarioId { get; set; }
-        public Usuario Usuario { get; set; }
+        public UsuarioDTO Usuario { get; set; }
     }
 }
