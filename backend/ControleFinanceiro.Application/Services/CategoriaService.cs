@@ -60,5 +60,12 @@ namespace ControleFinanceiro.Application.Services
 
             return filterResult;
         }
+
+        public async Task<IEnumerable<CategoriaDTO>> GetByTipo(string tipo)
+        {
+            var categorias = await _categoriaRepository.GetByTipo(tipo);
+
+            return _mapper.Map<IEnumerable<CategoriaDTO>>(categorias);
+        }
     }
 }

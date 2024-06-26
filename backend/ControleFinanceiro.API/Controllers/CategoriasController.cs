@@ -97,6 +97,15 @@ namespace ControleFinanceiro.API.Controllers
             return Ok(categorias);
         }
 
+        [Authorize]
+        [HttpGet("filtrar-categorias-by-tipo")]
+        public async Task<IActionResult> GetByTipo()
+        {
+            var despesas = await _categoriasService.GetByTipo("Despesa");            
+
+            return Ok(despesas);
+        }
+
 
     }
 }

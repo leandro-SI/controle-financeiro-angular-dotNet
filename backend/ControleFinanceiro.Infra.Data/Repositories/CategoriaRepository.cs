@@ -51,5 +51,10 @@ namespace ControleFinanceiro.Infra.Data.Repositories
             return await _context.Categorias.Include(c => c.Tipo)
                 .Where(c => c.Nome.ToLower().Contains(nome.ToLower())).ToListAsync();
         }
+
+        public async Task<IEnumerable<Categoria>> GetByTipo(string tipo)
+        {
+            return await _context.Categorias.Include(c => c.Tipo).Where(c => c.Tipo.Nome == tipo).ToListAsync();
+        }
     }
 }
