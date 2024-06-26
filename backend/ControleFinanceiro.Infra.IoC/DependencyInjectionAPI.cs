@@ -49,6 +49,7 @@ namespace ControleFinanceiro.Infra.IoC
             services.AddTransient<IValidator<RegisterDTO>, RegisterValidator>();
             services.AddTransient<IValidator<LoginDTO>, LoginValidator>();
             services.AddTransient<IValidator<CartaoDTO>, CartaoValidator>();
+            services.AddTransient<IValidator<DespesaDTO>, DespesaValidator>();
 
             services.AddScoped<ICategoriaRepository, CategoriaRepository>();
             services.AddScoped<ICategoriaService, CategoriaService>();
@@ -60,6 +61,8 @@ namespace ControleFinanceiro.Infra.IoC
             services.AddScoped<IUsuarioService, UsuarioService>();
             services.AddScoped<ICartaoRepository, CartaoRepository>();
             services.AddScoped<ICartaoService, CartaoService>();
+            services.AddScoped<IDespesaRepository, DespesaRepository>();
+            services.AddScoped<IDespesaService, DespesaService>();
 
             services.AddAutoMapper(typeof(DomainToDTOMappingProfile));
 
