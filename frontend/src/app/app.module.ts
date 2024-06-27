@@ -64,6 +64,7 @@ import { NovaDespesaComponent } from './components/Despesa/nova-despesa/nova-des
 import { ListarDespesasComponent } from './components/Despesa/listar-despesas/listar-despesas.component';
 import { EditarDespesaComponent } from './components/Despesa/editar-despesa/editar-despesa.component';
 import { DialogDeleteDespesaComponent } from './components/Despesa/dialog-delete-despesa/dialog-delete-despesa.component';
+import { MoedaPipe } from './custom-pipe/Moeda/moeda.pipe';
 
 
 export function GetTokenUser() {
@@ -73,6 +74,7 @@ export function GetTokenUser() {
 @NgModule({
   declarations: [
     AppComponent,
+    MoedaPipe,
     ListarCategoriasComponent,
     NovaCategoriaComponent,
     EditarCategoriaComponent,

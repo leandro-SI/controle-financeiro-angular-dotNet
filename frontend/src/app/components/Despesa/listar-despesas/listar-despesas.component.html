@@ -41,12 +41,12 @@
 
     <ng-container matColumnDef="categoria" >
       <th mat-header-cell *matHeaderCellDef mat-sort-header="" >Categoria</th>
-      <td mat-cell *matCellDef="let despesa"> {{ despesa.categoria.nome }} </td>
+      <td mat-cell *matCellDef="let despesa" title="{{despesa.categoria.nome}}" > <mat-icon>{{ despesa.categoria.icone }}</mat-icon>  </td>
     </ng-container>
 
     <ng-container matColumnDef="valor" >
       <th mat-header-cell *matHeaderCellDef mat-sort-header="" >Valor</th>
-      <td mat-cell *matCellDef="let despesa"> R$ {{ despesa.valor }} </td>
+      <td mat-cell *matCellDef="let despesa"> {{ despesa.valor | currencyFormat  }} </td>
     </ng-container>
 
     <ng-container matColumnDef="data" >
