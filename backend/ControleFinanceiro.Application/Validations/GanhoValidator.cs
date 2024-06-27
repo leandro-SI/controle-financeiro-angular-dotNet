@@ -8,15 +8,11 @@ using System.Threading.Tasks;
 
 namespace ControleFinanceiro.Application.Validations
 {
-    public class DespesaValidator : AbstractValidator<DespesaDTO>
+    public class GanhoValidator : AbstractValidator<GanhoDTO>
     {
 
-        public DespesaValidator()
+        public GanhoValidator()
         {
-            RuleFor(d => d.CartaoId)
-                .NotEmpty().WithMessage("Escolha o cartão")
-                .NotNull().WithMessage("Escolha o cartão");
-
             RuleFor(d => d.Descricao)
                 .NotEmpty().WithMessage("Preencha a descrição")
                 .NotNull().WithMessage("Preencha a descrição")
@@ -45,7 +41,6 @@ namespace ControleFinanceiro.Application.Validations
                 .NotNull().WithMessage("Preencha o ano")
                 .NotEmpty().WithMessage("Escolha o ano")
                 .InclusiveBetween(2024, 3000).WithMessage("Valor inválido");
-
         }
     }
 }

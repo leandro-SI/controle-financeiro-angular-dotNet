@@ -20,6 +20,7 @@ namespace ControleFinanceiro.Application.Mappings
             CreateMap<Cartao, CartaoDTO>().ReverseMap();
             CreateMap<Despesa, DespesaDTO>().ReverseMap();
             CreateMap<Mes, MesDTO>().ReverseMap();
+            CreateMap<Ganho, GanhoDTO>().ReverseMap();
         }
     }
 }
