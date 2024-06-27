@@ -1,3 +1,146 @@
-<p>
-  nova-despesa works!
-</p>
+<div *ngIf="!formulario">
+  <mat-progress-bar mode="buffer" ></mat-progress-bar>
+</div>
+
+<div class="div-card" *ngIf="formulario">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title><h3>Cadastro de cartões</h3></mat-card-title>
+    </mat-card-header>
+    <form [formGroup]="formulario" (ngSubmit)="EnviarFormulario()" >
+
+      <div class="card-erros" *ngIf="erros.length > 0">
+        <mat-card>
+          <mat-card-header>
+            <mat-card-title>Algo deu errado!</mat-card-title>
+          </mat-card-header>
+          <mat-divider></mat-divider>
+          <mat-card-content>
+            <div class="div-erros">
+              <h4 class="texto-erros" *ngFor="let erro of erros" >
+                {{erro}}
+              </h4>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </div>
+
+      <mat-card-content>
+        <div>
+          <mat-form-field>
+            <mat-label>Selecione o cartao</mat-label>
+            <mat-select formControlName="cartaoId" required >
+              <mat-option *ngFor="let cartao of cartoes" [value]="cartao.id" >{{ cartao.numero }}</mat-option>
+            </mat-select>
+            <mat-error *ngIf="propriedade.cartaoId.touched && propriedade.cartaoId.invalid">
+              <sup>*</sup> Selecione o cartao
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div>
+          <mat-form-field>
+            <mat-label>Descricao</mat-label>
+            <input
+              matInput type="text"
+              formControlName="descricao"
+              placeholder="Digite a descrição da despesa"
+              required
+              minlength="1"
+              maxlength="50"
+              >
+              <mat-error *ngIf="propriedade.descricao.touched && propriedade.descricao.invalid">
+                <sup>*</sup> Digite a descrição
+              </mat-error>
+              <mat-error *ngIf="propriedade.descricao.errors?.minlength">
+                <sup>*</sup> Use mais caracteres
+              </mat-error>
+              <mat-error *ngIf="propriedade.descricao.errors?.maxlength">
+                <sup>*</sup> Use menos caracteres
+              </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div>
+          <mat-form-field>
+            <mat-label>Selecione a categoria</mat-label>
+            <mat-select formControlName="categoriaId" required >
+              <mat-option *ngFor="let categoria of categorias" [value]="categoria.id" >{{ categoria.nome }}</mat-option>
+            </mat-select>
+            <mat-error *ngIf="propriedade.categoriaId.touched && propriedade.categoriaId.invalid">
+              <sup>*</sup> Selecione a categoria
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div>
+          <mat-form-field>
+            <mat-label>Valor</mat-label>
+            <input
+              matInput type="text"
+              formControlName="valor"
+              placeholder="Digite o valor"
+              required
+              >
+              <mat-error *ngIf="propriedade.valor.touched && propriedade.valor.invalid">
+                <sup>*</sup> Digite o valor
+              </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div>
+          <mat-form-field>
+            <mat-label>Dia</mat-label>
+            <input
+              matInput type="number"
+              formControlName="dia"
+              placeholder="Digite o dia"
+              required
+              >
+              <mat-error *ngIf="propriedade.dia.touched && propriedade.dia.invalid">
+                <sup>*</sup> Digite o dia
+              </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div>
+          <mat-form-field>
+            <mat-label>Selecione o mês</mat-label>
+            <mat-select formControlName="mesId" required >
+              <mat-option *ngFor="let mes of meses" [value]="mes.id" >{{ mes.nome }}</mat-option>
+            </mat-select>
+            <mat-error *ngIf="propriedade.mesId.touched && propriedade.mesId.invalid">
+              <sup>*</sup> Selecione o mês
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div>
+          <mat-form-field>
+            <mat-label>Ano</mat-label>
+            <input
+              matInput type="number"
+              formControlName="ano"
+              placeholder="Digite o ano"
+              required
+              >
+              <mat-error *ngIf="propriedade.ano.touched && propriedade.ano.invalid">
+                <sup>*</sup> Digite o ano
+              </mat-error>
+          </mat-form-field>
+        </div>
+
+      </mat-card-content>
+
+      <mat-divider></mat-divider>
+
+      <mat-card-actions>
+        <div>
+          <button type="submit" mat-stroked-button color="primary" [disabled]="formulario.invalid" >Salvar</button>
+          <button mat-stroked-button type="button" (click)="VoltarListagem()" >Voltar</button>
+        </div>
+      </mat-card-actions>
+    </form>
+  </mat-card>
+</div>
+

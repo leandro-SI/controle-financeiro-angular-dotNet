@@ -12,7 +12,7 @@ export class MesesService {
 constructor(private http: HttpClient) { }
 
   getAll() : Observable<Mes[]> {
-    return this.http.get<Mes[]>(`${environment.applicationUrl}Mes/get-all`)
+    return this.http.get<Mes[]>(`${environment.urlApi}Mes/get-all`)
   }
 
 }

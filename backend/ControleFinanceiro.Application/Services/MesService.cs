@@ -20,6 +20,8 @@ namespace ControleFinanceiro.Application.Services
         {
             var meses = await _mesRepository.FindAll();
 
+            meses = meses.OrderBy(m => m.Id);
+
             return _mapper.Map<IEnumerable<MesDTO>>(meses);
         }
     }

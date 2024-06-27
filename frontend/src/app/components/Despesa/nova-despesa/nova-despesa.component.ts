@@ -33,6 +33,8 @@ export class NovaDespesaComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.erros = [];
+
     this.cartaoService.getByUserId(this.usuarioId).subscribe(result => {
       this.cartoes = result
     })
@@ -50,6 +52,7 @@ export class NovaDespesaComponent implements OnInit {
       descricao: new FormControl(null, [Validators.required, Validators.minLength(1), Validators.maxLength(50)]),
       categoriaId: new FormControl(null, [Validators.required]),
       valor: new FormControl(null, [Validators.required]),
+      dia: new FormControl(null, [Validators.required]),
       mesId: new FormControl(null, [Validators.required]),
       ano: new FormControl(null, [Validators.required]),
       usuarioId: new FormControl(this.usuarioId)
@@ -58,6 +61,28 @@ export class NovaDespesaComponent implements OnInit {
 
   get propriedade() {
     return this.formulario.controls;
+  }
+
+  EnviarFormulario(): void {
+    const despesa = this.formulario.value
+    this.erros = [];
+    this.despesaService.create(despesa).subscribe(result => {
+      this.snackBar.open(result.mensagem, null, {
+        duration: 3000,
+        horizontalPosition: 'right',
+        verticalPosition: 'top'
+      })
+      this.router.navigate(['despesas/listar']);
+    },
+    (err) => {
+      if (err.error.status === 400) {
+        for(const campo in err.error.errors) {
+          if (err.error.errors.hasOwnProperty(campo)) {
+            this.erros.push(err.error.errors[campo])
+          }
+        }
+      }
+    })
   }
 
   VoltarListagem(): void {

@@ -11,6 +11,13 @@
         <mat-divider></mat-divider>
       </div>
 
+      <div>
+        <mat-list-item [routerLink]="['/despesas/listar']" >
+          <mat-icon>store</mat-icon> Despesas
+        </mat-list-item>
+        <mat-divider></mat-divider>
+      </div>
+
       <div *ngIf="isAdministrador">
         <mat-list-item [routerLink]="['/categorias/listar']" >
           <mat-icon>reorder</mat-icon> Categorias
