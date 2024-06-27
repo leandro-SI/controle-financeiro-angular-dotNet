@@ -62,6 +62,7 @@ import { EditarCartaoComponent } from './components/Cartao/editar-cartao/editar-
 import { DialogDeleteCartaoComponent } from './components/Cartao/dialog-delete-cartao/dialog-delete-cartao.component';
 import { NovaDespesaComponent } from './components/Despesa/nova-despesa/nova-despesa.component';
 import { ListarDespesasComponent } from './components/Despesa/listar-despesas/listar-despesas.component';
+import { EditarDespesaComponent } from './components/Despesa/editar-despesa/editar-despesa.component';
 
 
 export function GetTokenUser() {
@@ -88,7 +89,8 @@ export function GetTokenUser() {
     EditarCartaoComponent,
     DialogDeleteCartaoComponent,
     NovaDespesaComponent,
-    ListarDespesasComponent
+    ListarDespesasComponent,
+    EditarDespesaComponent
   ],
   imports: [
     BrowserModule,
