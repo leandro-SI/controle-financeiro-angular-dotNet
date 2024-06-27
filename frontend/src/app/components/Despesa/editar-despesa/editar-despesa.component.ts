@@ -58,13 +58,14 @@ export class EditarDespesaComponent implements OnInit {
       this.valorDespesa = result.valor;
       this.formulario = new FormGroup({
         id: new FormControl(result.id),
-        cartaoId: new FormControl(null, [Validators.required]),
-        descricao: new FormControl(null, [Validators.required, Validators.minLength(1), Validators.maxLength(50)]),
-        categoriaId: new FormControl(null, [Validators.required]),
-        valor: new FormControl(null, [Validators.required]),
-        dia: new FormControl(null, [Validators.required]),
-        mesId: new FormControl(null, [Validators.required]),
-        ano: new FormControl(null, [Validators.required]),
+        cartaoId: new FormControl(result.cartaoId, [Validators.required]),
+        descricao: new FormControl(result.descricao, [Validators.required, Validators.minLength(1), Validators.maxLength(50)]),
+        categoriaId: new FormControl(result.categoriaId, [Validators.required]),
+        valor: new FormControl(result.valor, [Validators.required]),
+        dia: new FormControl(result.dia, [Validators.required]),
+        mesId: new FormControl(result.mesId, [Validators.required]),
+        ano: new FormControl(result.ano, [Validators.required]),
+        usuarioid: new FormControl(this.usuarioId),
       })
     });
   }
