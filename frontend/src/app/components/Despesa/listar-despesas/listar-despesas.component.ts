@@ -8,6 +8,7 @@ import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 import { CartoesService } from 'src/app/services/cartoes/cartoes.service';
 import { DespesasService } from 'src/app/services/despesas/despesas.service';
+import { DialogDeleteDespesaComponent } from '../dialog-delete-despesa/dialog-delete-despesa.component';
 
 @Component({
   selector: 'app-listar-despesas',
@@ -54,8 +55,20 @@ export class ListarDespesasComponent implements OnInit {
     return ['numero', 'descricao', 'categoria', 'valor', 'data', 'acoes']
   }
 
-  AbrirDialog(despesaId, descricao): void {
-
+  AbrirDialog(despesaId, valor): void {
+    this.dialog.open(DialogDeleteDespesaComponent, {
+      data: {
+        id: despesaId,
+        valor: valor
+      }
+    }).afterClosed().subscribe(result => {
+      if (result === true) {
+        this.despesaService.getByUserId(this.usuarioId).subscribe(dados => {
+          this.despesas.data = dados;
+        })
+      }
+      this.displayColumns = this.ExibirColunas();
+    })
   }
 
   FiltrarDescricoes(descricao: string) : string[] {

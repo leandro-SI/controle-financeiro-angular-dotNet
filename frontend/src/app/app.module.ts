@@ -63,6 +63,7 @@ import { DialogDeleteCartaoComponent } from './components/Cartao/dialog-delete-c
 import { NovaDespesaComponent } from './components/Despesa/nova-despesa/nova-despesa.component';
 import { ListarDespesasComponent } from './components/Despesa/listar-despesas/listar-despesas.component';
 import { EditarDespesaComponent } from './components/Despesa/editar-despesa/editar-despesa.component';
+import { DialogDeleteDespesaComponent } from './components/Despesa/dialog-delete-despesa/dialog-delete-despesa.component';
 
 
 export function GetTokenUser() {
@@ -90,7 +91,8 @@ export function GetTokenUser() {
     DialogDeleteCartaoComponent,
     NovaDespesaComponent,
     ListarDespesasComponent,
-    EditarDespesaComponent
+    EditarDespesaComponent,
+    DialogDeleteDespesaComponent
   ],
   imports: [
     BrowserModule,
