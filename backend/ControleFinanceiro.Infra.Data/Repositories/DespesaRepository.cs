@@ -38,13 +38,14 @@ namespace ControleFinanceiro.Infra.Data.Repositories
                 .Where(d => d.CartaoId == cartaoId).ToListAsync();
         }
 
-        public async Task<IEnumerable<Despesa>> Filtrar(string descricao)
+        public async Task<IEnumerable<Despesa>> Filtrar(string descricao, string tipo)
         {
             return await _context.Despesas
                 .Include(d => d.Cartao)
                 .Include(d => d.Categoria)
                 .Include(d => d.Mes)
-                .Where(c => c.Descricao.ToLower().Contains(descricao.ToLower())).ToListAsync();
+                .Where(c => c.Categoria.Nome.ToLower()
+                .Contains(descricao.ToLower()) && c.Categoria.Tipo.Nome == tipo).ToListAsync();
         }
     }
 }

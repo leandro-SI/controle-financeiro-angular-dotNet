@@ -12,6 +12,6 @@ namespace ControleFinanceiro.Application.Interfaces
         Task Create(DespesaDTO despesaDTO);
         Task Update(DespesaDTO despesaDTO);
         Task Delete(long id);
-        Task<IEnumerable<DespesaDTO>> Filtrar(string descricao);
+        Task<IEnumerable<DespesaDTO>> Filtrar(string descricao, string tipo);
     }
 }

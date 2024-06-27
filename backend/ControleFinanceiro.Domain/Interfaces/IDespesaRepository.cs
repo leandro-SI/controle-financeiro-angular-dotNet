@@ -7,6 +7,6 @@ namespace ControleFinanceiro.Domain.Interfaces
         Task<IEnumerable<Despesa>> GetByUserId(string userId);
         Task<IEnumerable<Despesa>> GetByCartaoId(long cartaoId);
         void DeleteDespesas(IEnumerable<Despesa> despesas);
-        Task<IEnumerable<Despesa>> Filtrar(string descricao);
+        Task<IEnumerable<Despesa>> Filtrar(string descricao, string tipo);
     }
 }

@@ -93,10 +93,12 @@ namespace ControleFinanceiro.API.Controllers
 
         }
 
-        [HttpGet("filtrar/{descricao}")]
-        public async Task<IActionResult> Filtrar(string descricao)
+        [HttpGet("filtrar/{nomeCategoria}")]
+        public async Task<IActionResult> Filtrar(string nomeCategoria)
         {
-            var cartoes = await _despesaService.Filtrar(descricao);
+            var tipo = "Despesa";
+
+            var cartoes = await _despesaService.Filtrar(nomeCategoria, tipo);
 
             if (cartoes == null)
                 return NotFound();

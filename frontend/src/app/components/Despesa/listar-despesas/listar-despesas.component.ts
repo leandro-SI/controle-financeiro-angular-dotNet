@@ -22,7 +22,7 @@ export class ListarDespesasComponent implements OnInit {
   autoCompleteInput = new FormControl();
   opcoesDespesas: string[] = [];
   usuarioId: string = localStorage.getItem('UsuarioId');
-  descricaoDespesas: Observable<string[]>;
+  nomesCategorias: Observable<string[]>;
 
   @ViewChild(MatPaginator, {static: true})
   paginator: MatPaginator;
@@ -38,7 +38,7 @@ export class ListarDespesasComponent implements OnInit {
 
     this.despesaService.getByUserId(this.usuarioId).subscribe(result => {
       result.forEach((c) => {
-        this.opcoesDespesas.push(c.descricao);
+        this.opcoesDespesas.push(c.categoria.nome);
       });
 
       this.despesas.data = result;
@@ -48,7 +48,7 @@ export class ListarDespesasComponent implements OnInit {
 
     this.displayColumns = this.ExibirColunas();
 
-    this.descricaoDespesas = this.autoCompleteInput.valueChanges.pipe(startWith(''), map(descricao => this.FiltrarDescricoes(descricao)))
+    this.nomesCategorias = this.autoCompleteInput.valueChanges.pipe(startWith(''), map(descricao => this.FiltrarDescricoes(descricao)))
   }
 
   ExibirColunas() : string[] {
@@ -71,13 +71,13 @@ export class ListarDespesasComponent implements OnInit {
     })
   }
 
-  FiltrarDescricoes(descricao: string) : string[] {
-    if (descricao.trim().length >= 4) {
-      this.despesaService.filtrar(descricao).subscribe(result => {
+  FiltrarDescricoes(nomeCategoria: string) : string[] {
+    if (nomeCategoria.trim().length >= 4) {
+      this.despesaService.filtrar(nomeCategoria).subscribe(result => {
         this.despesas.data = result;
       })
     } else {
-      if (descricao === '') {
+      if (nomeCategoria === '') {
         this.despesaService.getByUserId(this.usuarioId).subscribe(result => {
           this.despesas.data = result
         })
@@ -85,7 +85,7 @@ export class ListarDespesasComponent implements OnInit {
     }
 
     return this.opcoesDespesas.filter(despesa =>
-      despesa.toLowerCase().includes(descricao.toLowerCase())
+      despesa.toLowerCase().includes(nomeCategoria.toLowerCase())
     )
   }
 

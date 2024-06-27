@@ -64,9 +64,9 @@ namespace ControleFinanceiro.Application.Services
             await _despesaRepository.Delete(id);
         }
 
-        public async Task<IEnumerable<DespesaDTO>> Filtrar(string descricao)
+        public async Task<IEnumerable<DespesaDTO>> Filtrar(string descricao, string tipo)
         {
-            var despesas = await _despesaRepository.Filtrar(descricao);
+            var despesas = await _despesaRepository.Filtrar(descricao, tipo);
 
             return _mapper.Map<IEnumerable<DespesaDTO>>(despesas);
         }
