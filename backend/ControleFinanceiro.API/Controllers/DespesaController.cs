@@ -1,5 +1,6 @@
 ﻿using ControleFinanceiro.Application.Dtos;
 using ControleFinanceiro.Application.Interfaces;
+using ControleFinanceiro.Application.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -90,6 +91,17 @@ namespace ControleFinanceiro.API.Controllers
                 mensagem = $"Despesa no valor de R$ {despesa.Valor} excluida com sucesso."
             });
 
+        }
+
+        [HttpGet("filtrar/{descricao}")]
+        public async Task<IActionResult> Filtrar(string descricao)
+        {
+            var cartoes = await _despesaService.Filtrar(descricao);
+
+            if (cartoes == null)
+                return NotFound();
+
+            return Ok(cartoes);
         }
 
     }

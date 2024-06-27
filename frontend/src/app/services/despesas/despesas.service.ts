@@ -38,4 +38,8 @@ export class DespesasService {
     return this.http.delete<Number>(`${environment.urlApi}Despesa/delete/${id}`, httpOptions);
   }
 
+  filtrar(descricao: string) : Observable<Despesa[]> {
+    return this.http.get<Despesa[]>(`${environment.urlApi}Despesa/filtrar/${descricao}`)
+  }
+
 }

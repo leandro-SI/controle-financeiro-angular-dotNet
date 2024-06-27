@@ -61,6 +61,8 @@ import { ListarCartoesComponent } from './components/Cartao/listar-cartoes/lista
 import { EditarCartaoComponent } from './components/Cartao/editar-cartao/editar-cartao.component';
 import { DialogDeleteCartaoComponent } from './components/Cartao/dialog-delete-cartao/dialog-delete-cartao.component';
 import { NovaDespesaComponent } from './components/Despesa/nova-despesa/nova-despesa.component';
+import { ListarDespesasComponent } from './components/Despesa/listar-despesas/listar-despesas.component';
+
 
 export function GetTokenUser() {
   return localStorage.getItem('token');
@@ -85,7 +87,8 @@ export function GetTokenUser() {
     ListarCartoesComponent,
     EditarCartaoComponent,
     DialogDeleteCartaoComponent,
-    NovaDespesaComponent
+    NovaDespesaComponent,
+    ListarDespesasComponent
   ],
   imports: [
     BrowserModule,

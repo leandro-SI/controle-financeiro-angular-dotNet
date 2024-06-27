@@ -14,6 +14,7 @@ import { NovoCartaoComponent } from './components/Cartao/novo-cartao/novo-cartao
 import { ListarCartoesComponent } from './components/Cartao/listar-cartoes/listar-cartoes.component';
 import { EditarCartaoComponent } from './components/Cartao/editar-cartao/editar-cartao.component';
 import { NovaDespesaComponent } from './components/Despesa/nova-despesa/nova-despesa.component';
+import { ListarDespesasComponent } from './components/Despesa/listar-despesas/listar-despesas.component';
 
 
 const routes: Routes = [
@@ -51,6 +52,9 @@ const routes: Routes = [
       },
       {
         path: 'despesas/nova', component: NovaDespesaComponent
+      },
+      {
+        path: 'despesas/listar', component: ListarDespesasComponent
       },
     ]
   },
