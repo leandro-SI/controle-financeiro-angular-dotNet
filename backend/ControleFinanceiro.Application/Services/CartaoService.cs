@@ -63,5 +63,10 @@ namespace ControleFinanceiro.Application.Services
             return _mapper.Map<IEnumerable<CartaoDTO>>(cartoes).ToList();
   
         }
+
+        public async Task<int> GetQuantidadeByUser(string userId)
+        {
+            return await _cartaoRepository.GetQuantidadeByUser(userId);
+        }
     }
 }

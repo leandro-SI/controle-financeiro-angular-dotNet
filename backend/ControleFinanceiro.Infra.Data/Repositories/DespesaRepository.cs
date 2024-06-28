@@ -47,5 +47,10 @@ namespace ControleFinanceiro.Infra.Data.Repositories
                 .Where(c => c.Categoria.Nome.ToLower()
                 .Contains(descricao.ToLower()) && c.Categoria.Tipo.Nome == tipo).ToListAsync();
         }
+
+        public async Task<decimal> GetDespesaTotalByUserId(string userId)
+        {
+            return await _context.Despesas.Where(d => d.UsuarioId == userId).SumAsync(d => d.Valor);
+        }
     }
 }

@@ -13,5 +13,6 @@ namespace ControleFinanceiro.Application.Interfaces
         Task Update(DespesaDTO despesaDTO);
         Task Delete(long id);
         Task<IEnumerable<DespesaDTO>> Filtrar(string descricao, string tipo);
+        Task<decimal> GetDespesaTotalByUserId(string userId);
     }
 }

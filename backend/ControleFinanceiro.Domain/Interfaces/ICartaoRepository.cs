@@ -6,5 +6,6 @@ namespace ControleFinanceiro.Domain.Interfaces
     {
         Task<IEnumerable<Cartao>> GetByUserId(string userId);
         Task<IEnumerable<Cartao>> Filtrar(string nome);
+        Task<int> GetQuantidadeByUser(string userId);
     }
 }

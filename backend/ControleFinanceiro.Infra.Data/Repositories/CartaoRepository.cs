@@ -24,5 +24,10 @@ namespace ControleFinanceiro.Infra.Data.Repositories
             return await _context.Cartoes
                 .Where(c => c.Nome.ToLower().Contains(nome.ToLower())).ToListAsync();
         }
+
+        public async Task<int> GetQuantidadeByUser(string userId)
+        {
+            return await _context.Cartoes.CountAsync(c => c.UsuarioId == userId);
+        }
     }
 }

@@ -7,5 +7,6 @@ namespace ControleFinanceiro.Domain.Interfaces
         Task<IEnumerable<Ganho>> GetByUserId(string userId);
         void DeleteGanhos(IEnumerable<Ganho> ganhos);
         Task<IEnumerable<Ganho>> Filtrar(string nomeCategoria, string tipo);
+        Task<decimal> GetGanhoTotalByUserId(string userId);
     }
 }

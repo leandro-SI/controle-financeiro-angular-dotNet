@@ -70,5 +70,10 @@ namespace ControleFinanceiro.Application.Services
 
             return _mapper.Map<IEnumerable<DespesaDTO>>(despesas);
         }
+
+        public async Task<decimal> GetDespesaTotalByUserId(string userId)
+        {
+            return await _despesaRepository.GetDespesaTotalByUserId(userId);
+        }
     }
 }

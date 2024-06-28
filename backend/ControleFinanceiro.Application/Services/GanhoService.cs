@@ -64,5 +64,10 @@ namespace ControleFinanceiro.Application.Services
 
             return _mapper.Map<IEnumerable<GanhoDTO>>(ganhos);
         }
+
+        public async Task<decimal> GetGanhoTotalByUserId(string userId)
+        {
+            return await _ganhoRepository.GetGanhoTotalByUserId(userId);
+        }
     }
 }

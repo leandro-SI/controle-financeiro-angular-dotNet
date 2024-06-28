@@ -41,6 +41,9 @@ namespace ControleFinanceiro.Infra.Data.Repositories
                 .Contains(nomeCategoria.ToLower()) && c.Categoria.Tipo.Nome == tipo).ToListAsync();
         }
 
-
+        public async Task<decimal> GetGanhoTotalByUserId(string userId)
+        {
+            return await _context.Ganhos.Where(g => g.UsuarioId == userId).SumAsync(g => g.Valor);
+        }
     }
 }

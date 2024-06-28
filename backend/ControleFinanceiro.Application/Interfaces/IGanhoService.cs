@@ -17,5 +17,6 @@ namespace ControleFinanceiro.Application.Interfaces
         Task Update(GanhoDTO ganhoDto);
         Task Delete(long id);
         Task<IEnumerable<GanhoDTO>> Filtrar(string nomeCategoria, string tipo);
+        Task<decimal> GetGanhoTotalByUserId(string userId);
     }
 }
