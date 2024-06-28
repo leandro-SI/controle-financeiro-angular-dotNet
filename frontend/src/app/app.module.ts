@@ -70,6 +70,7 @@ import { EditarDespesaComponent } from './components/Despesa/editar-despesa/edit
 import { DialogDeleteDespesaComponent } from './components/Despesa/dialog-delete-despesa/dialog-delete-despesa.component';
 import { NovoGanhoComponent } from './components/Ganho/novo-ganho/novo-ganho.component';
 import { ListarGanhosComponent } from './components/Ganho/listar-ganhos/listar-ganhos.component';
+import { EditarGanhoComponent } from './components/Ganho/editar-ganho/editar-ganho.component';
 
 
 export function GetTokenUser() {
@@ -101,7 +102,8 @@ export function GetTokenUser() {
     EditarDespesaComponent,
     DialogDeleteDespesaComponent,
     NovoGanhoComponent,
-    ListarGanhosComponent
+    ListarGanhosComponent,
+    EditarGanhoComponent
   ],
   imports: [
     BrowserModule,
