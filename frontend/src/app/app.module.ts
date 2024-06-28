@@ -40,6 +40,7 @@ import { AuthGuardService } from './services/auth/auth-guard.service';
 import { CartoesService } from './services/cartoes/cartoes.service';
 import { MesesService } from './services/meses/mes.service';
 import { DespesasService } from './services/despesas/despesas.service';
+import { GanhosService } from './services/ganhos/ganhos.service';
 
 
 //componentes
@@ -143,7 +144,8 @@ export function GetTokenUser() {
     CartoesService,
     AuthGuardService,
     MesesService,
-    DespesasService
+    DespesasService,
+    GanhosService
   ],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
