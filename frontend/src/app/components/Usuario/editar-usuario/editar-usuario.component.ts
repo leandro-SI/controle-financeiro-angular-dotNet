@@ -31,9 +31,11 @@ export class EditarUsuarioComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.erros = [];
+
     this.usuarioService.getFotoUsuario(this.usuarioId).subscribe(result => {
       this.fotoAnterior = result.imagem;
-      this.urlFoto = this.sanitizer.bypassSecurityTrustResourceUrl('data:image/png;base64' + result.imagem);
+      this.urlFoto = this.sanitizer.bypassSecurityTrustResourceUrl('data:image/png;base64,' + result.imagem);
     });
 
     this.usuarioService.getById(this.usuarioId).subscribe(result => {

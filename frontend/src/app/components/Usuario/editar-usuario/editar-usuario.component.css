@@ -1,0 +1,46 @@
+.div-form {
+  width: 900px;
+}
+
+.div-foto {
+  border-width: 1px;
+  border-color: #bdc3c7;
+  border-style: solid;
+  height: 300px;
+  width: 350px;
+}
+
+.div-formulario {
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+.formulario {
+  padding-top: 50px;
+}
+
+.botoes {
+  padding-top: 30px;
+}
+
+.btn-edit {
+  margin-right: 15px;
+}
+
+.mat-form-field.mat-form-field {
+  width: 500px;
+}
+
+.texto-erros {
+  font-weight: 900;
+  color: #c0392b;
+}
+
+.div-erros {
+  padding: 20px;
+}
+
+.card-rros {
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
