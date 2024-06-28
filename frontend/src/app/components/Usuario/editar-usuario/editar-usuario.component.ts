@@ -58,6 +58,84 @@ export class EditarUsuarioComponent implements OnInit {
     return this.formulario.controls;
   }
 
+  SelecionarFoto(fileInput: any) : void {
+    this.foto = fileInput.target.files[0] as File;
+
+    const reader = new FileReader();
+
+    reader.onload = function(e: any) {
+      document.getElementById('foto').removeAttribute('hidden');
+      document.getElementById('foto').setAttribute('src', e.target.result);
+    }
+
+    reader.readAsDataURL(this.foto);
+  }
+
+  AtualizarUsuario() : void {
+    const dados = this.formulario.value;
+    this.erros = [];
+
+    if (this.foto != null) {
+      const formData: FormData = new FormData();
+      formData.append('file', this.foto, this.foto.name);
+
+      this.usuarioService.salvarFoto(formData).subscribe(result => {
+        const updateUsuario: UpdateUsuario = new UpdateUsuario()
+        updateUsuario.id = dados.id;
+        updateUsuario.userName = dados.userName;
+        updateUsuario.cpf = dados.cpf;
+        updateUsuario.email = dados.email;
+        updateUsuario.profissao = dados.profissao;
+        updateUsuario.foto = result.foto;
+
+        this.usuarioService.update(updateUsuario).subscribe(response => {
+          this.snackBar.open(response.mensagem, null, {
+            duration: 3000,
+            horizontalPosition: 'right',
+            verticalPosition: 'top'
+          })
+          this.Voltar();
+        },
+        (err) => {
+          if (err.error.status === 400) {
+            for(const campo in err.error.errors) {
+              if (err.error.errors.hasOwnProperty(campo)) {
+                this.erros.push(err.error.errors[campo])
+              }
+            }
+          }
+        })
+
+      })
+    } else {
+      const updateUsuario: UpdateUsuario = new UpdateUsuario()
+      updateUsuario.id = dados.id;
+      updateUsuario.userName = dados.userName;
+      updateUsuario.cpf = dados.cpf;
+      updateUsuario.email = dados.email;
+      updateUsuario.profissao = dados.profissao;
+      updateUsuario.foto = this.fotoAnterior;
+
+      this.usuarioService.update(updateUsuario).subscribe(response => {
+        this.snackBar.open(response.mensagem, null, {
+          duration: 3000,
+          horizontalPosition: 'right',
+          verticalPosition: 'top'
+        })
+        this.Voltar();
+      },
+      (err) => {
+        if (err.error.status === 400) {
+          for(const campo in err.error.errors) {
+            if (err.error.errors.hasOwnProperty(campo)) {
+              this.erros.push(err.error.errors[campo])
+            }
+          }
+        }
+      })
+    }
+  }
+
   Voltar(): void {
     this.router.navigate(['cartoes/listar'])
   }

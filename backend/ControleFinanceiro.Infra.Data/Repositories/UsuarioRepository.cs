@@ -11,10 +11,10 @@ namespace ControleFinanceiro.Infra.Data.Repositories
         private readonly ApplicationDbContext _context;
         private readonly UserManager<Usuario> _userManager;
 
-        public UsuarioRepository(ApplicationDbContext context) : base(context)
+        public UsuarioRepository(ApplicationDbContext context, UserManager<Usuario> userManager) : base(context)
         {
             _context = context;
-  
+            _userManager = userManager;
         }
 
         public async Task<int> GetQuantidade()

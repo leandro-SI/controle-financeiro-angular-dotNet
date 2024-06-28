@@ -10,7 +10,7 @@
     <mat-divider></mat-divider>
 
     <div class="formulario">
-      <form [formGroup]="formulario">
+      <form [formGroup]="formulario" (ngSubmit)="AtualizarUsuario()" >
         <div fxLayout="row" fxLayoutGap="30px">
           <div fxFlex="40" fxLayoutAlign="center end">
             <div fxLayout="column">
@@ -18,7 +18,7 @@
                 <img id="foto" [src]="urlFoto" alt="" *ngIf="urlFoto" width="350" height="300" >
               </div>
               <div fxLayoutAlign="center end">
-                <input hidden type="file" #fileInput name="foto" formControlName="foto">
+                <input hidden type="file" #fileInput name="foto" formControlName="foto" (change)="SelecionarFoto($event)">
                 <br><br><br>
                 <button type="button" mat-stroked-button color="primary" (click)="fileInput.click()" >
                   Escolha sua foto
