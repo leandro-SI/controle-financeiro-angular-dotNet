@@ -14,10 +14,12 @@ namespace ControleFinanceiro.API.Controllers
     {
 
         private readonly ICartaoService _cartaoService;
+        private readonly IDespesaService _despesaService;
 
-        public CartaoController(ICartaoService cartaoService)
+        public CartaoController(ICartaoService cartaoService, IDespesaService despesaService)
         {
             _cartaoService = cartaoService;
+            _despesaService = despesaService;
         }
 
         [HttpGet("get-by-user/{userId}")]
@@ -85,6 +87,10 @@ namespace ControleFinanceiro.API.Controllers
                 return NotFound();
 
             await _cartaoService.Delete(id);
+
+            var despesas = await _despesaService.GetByCartaoId(cartao.Id);
+
+            _despesaService.DeleteDespesas(despesas);
 
             return Ok(new
             {
