@@ -81,7 +81,7 @@ export class RegisterUsuarioComponent implements OnInit {
           horizontalPosition: 'right',
           verticalPosition: 'top'
         })
-        this.router.navigate(['categorias/listar']);
+        this.router.navigate(['/dashboard/index']);
       },
       (err) => {
         if (err.error.status === 400) {

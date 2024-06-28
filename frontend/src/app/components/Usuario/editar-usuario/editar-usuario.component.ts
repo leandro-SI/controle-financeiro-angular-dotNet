@@ -137,7 +137,7 @@ export class EditarUsuarioComponent implements OnInit {
   }
 
   Voltar(): void {
-    this.router.navigate(['cartoes/listar'])
+    this.router.navigate(['dashboard/index'])
   }
 
 

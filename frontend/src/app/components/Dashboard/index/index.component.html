@@ -1,3 +1,52 @@
-<p>
-  index works!
-</p>
+<div class="div-dashboard">
+  <div fxLayout="row" fxLayoutAlign="space-around center">
+    <div>
+      <mat-card>
+        <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px" >
+          <div fxFlex="40">
+            <mat-icon style="font-size: 50px;" >credit_card</mat-icon>
+          </div>
+          <div fxFlex="60">
+            {{qtdCartoes}} Cartões Cadastrados
+          </div>
+        </div>
+      </mat-card>
+    </div>
+    <div>
+      <mat-card>
+        <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px" >
+          <div fxFlex="40">
+            <mat-icon style="font-size: 50px;" >trending_up</mat-icon>
+          </div>
+          <div fxFlex="60">
+            Ganhos de <span class="nowrap">{{ganhoTotal | currencyFormat}}</span>
+          </div>
+        </div>
+      </mat-card>
+    </div>
+    <div>
+      <mat-card>
+        <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px" >
+          <div fxFlex="40">
+            <mat-icon style="font-size: 50px;" >trending_down</mat-icon>
+          </div>
+          <div fxFlex="60">
+            Despesas de <span class="nowrap">{{despesaTotal | currencyFormat}}</span>
+          </div>
+        </div>
+      </mat-card>
+    </div>
+    <div>
+      <mat-card>
+        <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px" >
+          <div fxFlex="40">
+            <mat-icon style="font-size: 50px;" >account_balance</mat-icon>
+          </div>
+          <div fxFlex="60">
+            Saldo de <span class="nowrap">{{saldo | currencyFormat}}</span>
+          </div>
+        </div>
+      </mat-card>
+    </div>
+  </div>
+</div>
