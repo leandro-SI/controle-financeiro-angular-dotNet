@@ -44,6 +44,7 @@ import { CartoesService } from './services/cartoes/cartoes.service';
 import { MesesService } from './services/meses/mes.service';
 import { DespesasService } from './services/despesas/despesas.service';
 import { GanhosService } from './services/ganhos/ganhos.service';
+import { DashboardService } from './services/dashboard/dashboard.service';
 
 
 //componentes
@@ -73,6 +74,7 @@ import { ListarGanhosComponent } from './components/Ganho/listar-ganhos/listar-g
 import { EditarGanhoComponent } from './components/Ganho/editar-ganho/editar-ganho.component';
 import { DialogDeleteGanhoComponent } from './components/Ganho/dialog-delete-ganho/dialog-delete-ganho.component';
 import { EditarUsuarioComponent } from './components/Usuario/editar-usuario/editar-usuario.component';
+import { IndexComponent } from './components/Dashboard/index/index.component';
 
 
 export function GetTokenUser() {
@@ -82,6 +84,7 @@ export function GetTokenUser() {
 @NgModule({
   declarations: [
     AppComponent,
+    IndexComponent,
     MoedaPipe,
     ListarCategoriasComponent,
     NovaCategoriaComponent,
@@ -157,7 +160,8 @@ export function GetTokenUser() {
     AuthGuardService,
     MesesService,
     DespesasService,
-    GanhosService
+    GanhosService,
+    DashboardService
   ],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
