@@ -68,6 +68,9 @@ namespace ControleFinanceiro.Infra.IoC
             services.AddScoped<IMesService, MesService>();
             services.AddScoped<IGanhoRepository, GanhoRepository>();
             services.AddScoped<IGanhoService, GanhoService>();
+            services.AddScoped<IGraficoRepository, GraficoRepository>();
+            services.AddScoped<IGraficoService, GraficoService>();
+            
 
             services.AddAutoMapper(typeof(DomainToDTOMappingProfile));
 

@@ -1,5 +1,6 @@
 ﻿using ControleFinanceiro.Application.Dtos;
 using ControleFinanceiro.Application.Interfaces;
+using ControleFinanceiro.Domain.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -15,13 +16,15 @@ namespace ControleFinanceiro.API.Controllers
         private readonly IGanhoService _ganhoService;
         private readonly IDespesaService _despesaService;
         private readonly IMesService _mesService;
+        private readonly IGraficoRepository _graficoRepository;
 
-        public DashboardController(ICartaoService cartaoService, IGanhoService ganhoService, IDespesaService despesaService, IMesService mesService)
+        public DashboardController(ICartaoService cartaoService, IGanhoService ganhoService, IDespesaService despesaService, IMesService mesService, IGraficoRepository graficoRepository)
         {
             _cartaoService = cartaoService;
             _ganhoService = ganhoService;
             _despesaService = despesaService;
             _mesService = mesService;
+            _graficoRepository = graficoRepository;
         }
 
         [HttpGet("get-cards/{userId}")]
@@ -41,6 +44,17 @@ namespace ControleFinanceiro.API.Controllers
             };
 
             return Ok(cardDashboard);
+        }
+
+        [HttpGet("get-dados-anuais-by-user/{userId}/{ano}")]
+        public object GetDadosAnuaisByUsuarioId(string userId, int ano)
+        {
+            return new
+            {
+                ganhos = _graficoRepository.GetGanhosAnuaisByUsuarioId(userId, ano),
+                despesas = _graficoRepository.GetDespesasAnuaisByUsuarioId(userId, ano),
+                meses = _mesService.GetAll()
+            };
         }
 
     }
