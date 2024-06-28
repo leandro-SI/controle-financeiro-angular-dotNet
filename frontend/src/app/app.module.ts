@@ -72,6 +72,7 @@ import { NovoGanhoComponent } from './components/Ganho/novo-ganho/novo-ganho.com
 import { ListarGanhosComponent } from './components/Ganho/listar-ganhos/listar-ganhos.component';
 import { EditarGanhoComponent } from './components/Ganho/editar-ganho/editar-ganho.component';
 import { DialogDeleteGanhoComponent } from './components/Ganho/dialog-delete-ganho/dialog-delete-ganho.component';
+import { EditarUsuarioComponent } from './components/Usuario/editar-usuario/editar-usuario.component';
 
 
 export function GetTokenUser() {
@@ -105,7 +106,8 @@ export function GetTokenUser() {
     NovoGanhoComponent,
     ListarGanhosComponent,
     EditarGanhoComponent,
-    DialogDeleteGanhoComponent
+    DialogDeleteGanhoComponent,
+    EditarUsuarioComponent
   ],
   imports: [
     BrowserModule,

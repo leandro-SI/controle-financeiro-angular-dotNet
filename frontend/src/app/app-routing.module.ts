@@ -19,6 +19,7 @@ import { EditarDespesaComponent } from './components/Despesa/editar-despesa/edit
 import { NovoGanhoComponent } from './components/Ganho/novo-ganho/novo-ganho.component';
 import { ListarGanhosComponent } from './components/Ganho/listar-ganhos/listar-ganhos.component';
 import { EditarGanhoComponent } from './components/Ganho/editar-ganho/editar-ganho.component';
+import { EditarUsuarioComponent } from './components/Usuario/editar-usuario/editar-usuario.component';
 
 
 const routes: Routes = [
@@ -71,6 +72,9 @@ const routes: Routes = [
       },
       {
         path: 'ganhos/editar/:id', component: EditarGanhoComponent
+      },
+      {
+        path: 'usuarios/editar/:id', component: EditarUsuarioComponent
       },
 
     ]
