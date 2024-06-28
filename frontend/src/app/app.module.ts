@@ -69,6 +69,7 @@ import { ListarDespesasComponent } from './components/Despesa/listar-despesas/li
 import { EditarDespesaComponent } from './components/Despesa/editar-despesa/editar-despesa.component';
 import { DialogDeleteDespesaComponent } from './components/Despesa/dialog-delete-despesa/dialog-delete-despesa.component';
 import { NovoGanhoComponent } from './components/Ganho/novo-ganho/novo-ganho.component';
+import { ListarGanhosComponent } from './components/Ganho/listar-ganhos/listar-ganhos.component';
 
 
 export function GetTokenUser() {
@@ -99,7 +100,8 @@ export function GetTokenUser() {
     ListarDespesasComponent,
     EditarDespesaComponent,
     DialogDeleteDespesaComponent,
-    NovoGanhoComponent
+    NovoGanhoComponent,
+    ListarGanhosComponent
   ],
   imports: [
     BrowserModule,

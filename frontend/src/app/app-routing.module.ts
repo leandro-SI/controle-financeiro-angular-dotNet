@@ -17,6 +17,7 @@ import { NovaDespesaComponent } from './components/Despesa/nova-despesa/nova-des
 import { ListarDespesasComponent } from './components/Despesa/listar-despesas/listar-despesas.component';
 import { EditarDespesaComponent } from './components/Despesa/editar-despesa/editar-despesa.component';
 import { NovoGanhoComponent } from './components/Ganho/novo-ganho/novo-ganho.component';
+import { ListarGanhosComponent } from './components/Ganho/listar-ganhos/listar-ganhos.component';
 
 
 const routes: Routes = [
@@ -63,6 +64,9 @@ const routes: Routes = [
       },
       {
         path: 'ganhos/novo', component: NovoGanhoComponent
+      },
+      {
+        path: 'ganhos/listar', component: ListarGanhosComponent
       },
 
     ]
