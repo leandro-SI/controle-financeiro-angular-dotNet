@@ -43,6 +43,10 @@ export class CategoriasService {
   }
 
   filtrarCategoriasDespepesas() : Observable<Categoria[]> {
-    return this.http.get<Categoria[]>(`${environment.urlApi}Categorias/filtrar-categorias-by-tipo`)
+    return this.http.get<Categoria[]>(`${environment.urlApi}Categorias/filtrar-categorias-by-despesa`)
+  }
+
+  filtrarCategoriasGanhos() : Observable<Categoria[]> {
+    return this.http.get<Categoria[]>(`${environment.urlApi}Categorias/filtrar-categorias-by-ganho`)
   }
 }

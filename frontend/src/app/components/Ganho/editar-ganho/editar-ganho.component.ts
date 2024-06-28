@@ -39,7 +39,7 @@ export class EditarGanhoComponent implements OnInit {
     this.erros = [];
     this.ganhoId = this.route.snapshot.params.id;
 
-    this.categoriaService.filtrarCategoriasDespepesas().subscribe(result => {
+    this.categoriaService.filtrarCategoriasGanhos().subscribe(result => {
       this.categorias = result;
     })
 

@@ -33,7 +33,7 @@ export class NovoGanhoComponent implements OnInit {
   ngOnInit() {
     this.erros = [];
 
-    this.categoriaService.filtrarCategoriasDespepesas().subscribe(result => {
+    this.categoriaService.filtrarCategoriasGanhos().subscribe(result => {
       this.categorias = result;
     })
 

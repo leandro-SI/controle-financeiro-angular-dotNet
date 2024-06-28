@@ -1,0 +1,22 @@
+.div-card {
+  padding: 50px;
+  width: 600px;
+}
+
+.mat-form-field.mat-form-field {
+  width: 500px;
+}
+
+.texto-erros {
+  font-weight: 900;
+  color: #c0392b;
+}
+
+.div-erros {
+  padding: 20px;
+}
+
+.card-rros {
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
