@@ -2,6 +2,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 
+//Pipes
+import { MoedaPipe } from './custom-pipe/Moeda/moeda.pipe';
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -65,7 +68,7 @@ import { NovaDespesaComponent } from './components/Despesa/nova-despesa/nova-des
 import { ListarDespesasComponent } from './components/Despesa/listar-despesas/listar-despesas.component';
 import { EditarDespesaComponent } from './components/Despesa/editar-despesa/editar-despesa.component';
 import { DialogDeleteDespesaComponent } from './components/Despesa/dialog-delete-despesa/dialog-delete-despesa.component';
-import { MoedaPipe } from './custom-pipe/Moeda/moeda.pipe';
+import { NovoGanhoComponent } from './components/Ganho/novo-ganho/novo-ganho.component';
 
 
 export function GetTokenUser() {
@@ -95,7 +98,8 @@ export function GetTokenUser() {
     NovaDespesaComponent,
     ListarDespesasComponent,
     EditarDespesaComponent,
-    DialogDeleteDespesaComponent
+    DialogDeleteDespesaComponent,
+    NovoGanhoComponent
   ],
   imports: [
     BrowserModule,
