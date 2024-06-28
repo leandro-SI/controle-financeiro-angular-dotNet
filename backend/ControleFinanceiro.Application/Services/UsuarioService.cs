@@ -77,6 +77,17 @@ namespace ControleFinanceiro.Application.Services
             return _mapper.Map<UsuarioDTO>(entity);
         }
 
+        public async Task UpdateUsuario(UsuarioDTO usuario, UsuarioUpdateDTO usuarioUpdate)
+        {
+            usuario.UserName = usuarioUpdate.UserName;
+            usuario.Profissao = usuarioUpdate.Profissao;
+            usuario.CPF = usuarioUpdate.CPF;
+            usuario.Email = usuarioUpdate.Email;
+            usuario.Foto = usuarioUpdate.Foto;
 
+            var novoUsuario = _mapper.Map<Usuario>(usuario);
+
+            await _usuarioRepository.UpdateUsuario(novoUsuario);
+        }
     }
 }

@@ -11,6 +11,7 @@ namespace ControleFinanceiro.Domain.Interfaces
     public interface IUsuarioRepository : IGenericRepository<Usuario>
     {
         Task<int> GetQuantidade();
+        Task UpdateUsuario(Usuario usuario);
 
     }
 }

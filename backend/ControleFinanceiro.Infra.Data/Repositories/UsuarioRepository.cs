@@ -9,6 +9,7 @@ namespace ControleFinanceiro.Infra.Data.Repositories
     public class UsuarioRepository : GenericRepository<Usuario>, IUsuarioRepository
     {
         private readonly ApplicationDbContext _context;
+        private readonly UserManager<Usuario> _userManager;
 
         public UsuarioRepository(ApplicationDbContext context) : base(context)
         {
@@ -21,5 +22,9 @@ namespace ControleFinanceiro.Infra.Data.Repositories
             return await _context.Usuarios.CountAsync();
         }
 
+        public async Task UpdateUsuario(Usuario usuario)
+        {
+            await _userManager.UpdateAsync(usuario);
+        }
     }
 }

@@ -36,7 +36,17 @@ namespace ControleFinanceiro.API.Controllers
             if (usuario == null)
                 return NotFound();
 
-            return Ok(usuario);
+            var model = new UsuarioUpdateDTO
+            {
+                Id = usuario.Id,
+                UserName = usuario.UserName,
+                Email = usuario.Email,
+                CPF = usuario.CPF,
+                Profissao = usuario.Profissao,
+                Foto = usuario.Foto
+            };
+
+            return Ok(model);
 
         }
 
@@ -55,6 +65,27 @@ namespace ControleFinanceiro.API.Controllers
             }
 
             return Ok(new { foto = b });
+        }
+
+        [HttpGet("get-foto-usuario/{userId}")]
+        public async Task<dynamic> RetornarFotoUsuario(string userId)
+        {
+            var userDto = await _usuarioService.GetById(userId);
+
+            return new { imagem = userDto.Foto };
+        }
+
+        [HttpPut("update")]
+        public async Task<IActionResult> UpdateUsuario([FromBody] UsuarioUpdateDTO usuarioUpdate)
+        {
+            var usuario = await _usuarioService.GetById(usuarioUpdate.Id);
+
+            await _usuarioService.UpdateUsuario(usuario, usuarioUpdate);
+
+            return Ok(new
+            {
+                mensagem = $"Usuario {usuario.UserName} atualizado com sucesso."
+            });
         }
 
     }

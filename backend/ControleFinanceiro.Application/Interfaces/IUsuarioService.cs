@@ -19,5 +19,6 @@ namespace ControleFinanceiro.Application.Interfaces
         Task<bool> CriarUsuario(RegisterDTO registerDto, string senha);
         Task VincularUsuarioFuncao(UsuarioDTO usuarioDto, string funcao);
         Task LogarUsuario(UsuarioDTO usuarioDto, bool lembrar);
+        Task UpdateUsuario(UsuarioDTO usuarioDTO, UsuarioUpdateDTO usuarioUpdate);
     }
 }

@@ -50,6 +50,7 @@ namespace ControleFinanceiro.Infra.IoC
             services.AddTransient<IValidator<LoginDTO>, LoginValidator>();
             services.AddTransient<IValidator<CartaoDTO>, CartaoValidator>();
             services.AddTransient<IValidator<DespesaDTO>, DespesaValidator>();
+            services.AddTransient<IValidator<UsuarioUpdateDTO>, UsuarioUpdateValidator>();
 
             services.AddScoped<ICategoriaRepository, CategoriaRepository>();
             services.AddScoped<ICategoriaService, CategoriaService>();
