@@ -7,6 +7,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 import { GanhosService } from 'src/app/services/ganhos/ganhos.service';
+import { DialogDeleteGanhoComponent } from '../dialog-delete-ganho/dialog-delete-ganho.component';
 
 @Component({
   selector: 'app-listar-ganhos',
@@ -54,7 +55,19 @@ export class ListarGanhosComponent implements OnInit {
   }
 
   AbrirDialog(ganhoId, valor): void {
-
+    this.dialog.open(DialogDeleteGanhoComponent, {
+      data: {
+        id: ganhoId,
+        valor: valor
+      }
+    }).afterClosed().subscribe(result => {
+      if (result === true) {
+        this.ganhoService.getByUserId(this.usuarioId).subscribe(dados => {
+          this.ganhos.data = dados;
+        })
+      }
+      this.displayColumns = this.ExibirColunas();
+    })
   }
 
   FiltrarDespesasCategoria(nomeCategoria: string) : string[] {

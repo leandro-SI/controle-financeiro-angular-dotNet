@@ -71,6 +71,7 @@ import { DialogDeleteDespesaComponent } from './components/Despesa/dialog-delete
 import { NovoGanhoComponent } from './components/Ganho/novo-ganho/novo-ganho.component';
 import { ListarGanhosComponent } from './components/Ganho/listar-ganhos/listar-ganhos.component';
 import { EditarGanhoComponent } from './components/Ganho/editar-ganho/editar-ganho.component';
+import { DialogDeleteGanhoComponent } from './components/Ganho/dialog-delete-ganho/dialog-delete-ganho.component';
 
 
 export function GetTokenUser() {
@@ -103,7 +104,8 @@ export function GetTokenUser() {
     DialogDeleteDespesaComponent,
     NovoGanhoComponent,
     ListarGanhosComponent,
-    EditarGanhoComponent
+    EditarGanhoComponent,
+    DialogDeleteGanhoComponent
   ],
   imports: [
     BrowserModule,
