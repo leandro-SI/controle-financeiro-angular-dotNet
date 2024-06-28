@@ -67,7 +67,7 @@ namespace ControleFinanceiro.API.Controllers
             return Ok(new { foto = b });
         }
 
-        [HttpGet("get-foto-usuario/{userId}")]
+        [HttpGet("get-foto/{userId}")]
         public async Task<dynamic> RetornarFotoUsuario(string userId)
         {
             var userDto = await _usuarioService.GetById(userId);
