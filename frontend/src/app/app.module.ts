@@ -32,6 +32,7 @@ import { JwtModule } from '@auth0/angular-jwt';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { ChartsModule } from 'ng2-charts';
 
 
 //services
@@ -135,6 +136,7 @@ export function GetTokenUser() {
     MatSnackBarModule,
     MatProgressBarModule,
     FlexLayoutModule,
+    ChartsModule,
     MatSidenavModule,
     MatListModule,
     MatToolbarModule,

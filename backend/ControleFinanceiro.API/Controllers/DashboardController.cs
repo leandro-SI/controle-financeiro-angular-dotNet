@@ -1,5 +1,6 @@
 ﻿using ControleFinanceiro.Application.Dtos;
 using ControleFinanceiro.Application.Interfaces;
+using ControleFinanceiro.Domain.Entities;
 using ControleFinanceiro.Domain.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
@@ -47,14 +48,14 @@ namespace ControleFinanceiro.API.Controllers
         }
 
         [HttpGet("get-dados-anuais-by-user/{userId}/{ano}")]
-        public object GetDadosAnuaisByUsuarioId(string userId, int ano)
+        public async Task<IActionResult> GetDadosAnuaisByUsuarioId(string userId, int ano)
         {
-            return new
+            return Ok(new
             {
-                ganhos = _graficoRepository.GetGanhosAnuaisByUsuarioId(userId, ano),
-                despesas = _graficoRepository.GetDespesasAnuaisByUsuarioId(userId, ano),
-                meses = _mesService.GetAll()
-            };
+                ganhos = await _graficoRepository.GetGanhosAnuaisByUsuarioId(userId, ano),
+                despesas = await _graficoRepository.GetDespesasAnuaisByUsuarioId(userId, ano),
+                meses = await _mesService.GetAll()
+            });
         }
 
     }

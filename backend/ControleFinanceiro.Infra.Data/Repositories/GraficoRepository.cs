@@ -1,5 +1,6 @@
 ﻿using ControleFinanceiro.Domain.Interfaces;
 using ControleFinanceiro.Infra.Data.Context;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,28 +18,30 @@ namespace ControleFinanceiro.Infra.Data.Repositories
             _context = context;
         }
 
-        public object GetDespesasAnuaisByUsuarioId(string userId, int ano)
+        public async Task<object> GetDespesasAnuaisByUsuarioId(string userId, int ano)
         {
-            return _context.Despesas
+            return await _context.Despesas
                 .Where(d => d.UsuarioId == userId && d.Ano == ano)
+                .OrderBy(d => d.Mes.Id)
                 .GroupBy(d => d.Mes.Id)
                 .Select(d => new
                 {
                     MesId = d.Key,
                     valores = d.Sum(x => x.Valor)
-                });
+                }).ToListAsync();
         }
 
-        public object GetGanhosAnuaisByUsuarioId(string userId, int ano)
+        public async Task<object> GetGanhosAnuaisByUsuarioId(string userId, int ano)
         {
-            return _context.Ganhos
+            return await _context.Ganhos
                 .Where(g => g.UsuarioId == userId && g.Ano == ano)
+                .OrderBy(g => g.Mes.Id)
                 .GroupBy(g => g.Mes.Id)
                 .Select(g => new
                 {
                     MesId = g.Key,
                     valores = g.Sum(x => x.Valor)
-                });
+                }).ToListAsync();
         }
     }
 }

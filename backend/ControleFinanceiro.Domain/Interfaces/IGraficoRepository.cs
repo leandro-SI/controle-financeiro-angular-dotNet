@@ -8,7 +8,7 @@ namespace ControleFinanceiro.Domain.Interfaces
 {
     public interface IGraficoRepository
     {
-        object GetGanhosAnuaisByUsuarioId(string userId, int ano);
-        object GetDespesasAnuaisByUsuarioId(string userId, int ano);
+        Task<object> GetGanhosAnuaisByUsuarioId(string userId, int ano);
+        Task<object> GetDespesasAnuaisByUsuarioId(string userId, int ano);
     }
 }

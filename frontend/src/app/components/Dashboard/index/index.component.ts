@@ -30,12 +30,13 @@ export class IndexComponent implements OnInit {
     }
   };
   plugins = [];
-  tipo: 'line';
+  tipo = 'line';
 
   constructor(private dashboardService: DashboardService) { }
 
   ngOnInit() {
     this.dashboardService.getCards(this.usuarioId).subscribe(result => {
+      console.log('Result Cards: ', result)
       this.qtdCartoes = result.qtdCartoes;
       this.ganhoTotal = result.ganhoTotal;
       this.despesaTotal = result.despesaTotal;
@@ -43,8 +44,12 @@ export class IndexComponent implements OnInit {
     });
 
     this.anos = this.CarregarAnos(this.anoInicial, this.anoAtual);
-
+    console.log('Passou 1')
     this.dashboardService.getDadosAnuaisByUserId(this.usuarioId, this.anoAtual).subscribe(result => {
+      console.log('Passou')
+      console.log('Result Meses: ', result.meses)
+      console.log('Result Ganhos: ', result.ganhos)
+      console.log('Result Desnepsas: ', result.despesas)
       this.labels = this.RetornarMeses(result.meses);
 
       this.dados = [
@@ -86,6 +91,7 @@ export class IndexComponent implements OnInit {
   }
 
   RetornarMeses(dadosMeses: any) : string[] {
+    console.log('dadosMeses: ', dadosMeses)
     const meses = [];
     let indice = 0;
     const qtdMeses = dadosMeses.length;
@@ -148,6 +154,37 @@ export class IndexComponent implements OnInit {
 
       return valores;
     }
+  }
+
+  CarregarDados(anoSelecionado: number) : void {
+    this.dashboardService.getDadosAnuaisByUserId(this.usuarioId, anoSelecionado).subscribe(result => {
+      this.labels = this.RetornarMeses(result.meses);
+
+      this.dados = [
+        {
+          data: this.RetornarValoresGanhos(result.meses, result.ganhos),
+          label: 'Ganho de R$',
+          fill: true,
+          borderColor: '#27ae60',
+          backgroundColor: '#27ae60',
+          pointBackgroundColor: '#27ae60',
+          pointBorderColor: '#27ae60',
+          pointHoverBackgroundColor: '#27ae60',
+          pointHoverBorderColor: '#27ae60',
+        },
+        {
+          data: this.RetornarValoresDespesas(result.meses, result.despesas),
+          label: 'Despesa de R$',
+          fill: true,
+          borderColor: '#c0392b',
+          backgroundColor: '#c0392b',
+          pointBackgroundColor: '#c0392b',
+          pointBorderColor: '#c0392b',
+          pointHoverBackgroundColor: '#c0392b',
+          pointHoverBorderColor: '#c0392b',
+        }
+      ];
+    });
   }
 
 }

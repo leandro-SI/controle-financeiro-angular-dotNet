@@ -17,14 +17,14 @@ namespace ControleFinanceiro.Application.Services
             _graficoRepository = graficoRepository;
         }
 
-        public object GetDespesasAnuaisByUsuarioId(string userId, int ano)
+        public async Task<object> GetDespesasAnuaisByUsuarioId(string userId, int ano)
         {
-            return _graficoRepository.GetDespesasAnuaisByUsuarioId(userId, ano);
+            return await _graficoRepository.GetDespesasAnuaisByUsuarioId(userId, ano);
         }
 
-        public object GetGanhosAnuaisByUsuarioId(string userId, int ano)
+        public async Task<object> GetGanhosAnuaisByUsuarioId(string userId, int ano)
         {
-            return _graficoRepository.GetGanhosAnuaisByUsuarioId(userId, ano);
+            return await _graficoRepository.GetGanhosAnuaisByUsuarioId(userId, ano);
         }
     }
 }
