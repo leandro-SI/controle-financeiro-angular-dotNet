@@ -50,3 +50,12 @@
     </div>
   </div>
 </div>
+
+<div *ngIf="anos" class="anos" fxLayout="row" fxLayoutAlign="end center">
+  <mat-form-field appearance="outline" >
+    <mat-label>Selecione o ano</mat-label>
+    <mat-select #anoSelecionado ngModel="anoAtual" >
+      <mat-option *ngFor="let ano of anos" [value]="ano" >{{ ano }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>

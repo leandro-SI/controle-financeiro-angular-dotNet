@@ -21,4 +21,8 @@ export class DashboardService {
     return this.http.get<any>(`${environment.urlApi}Dashboard/get-cards/${userId}`)
   }
 
+  getDadosAnuaisByUserId(userId: string, ano: number) : Observable<any> {
+    return this.http.get<any>(`${environment.urlApi}Dashboard/get-dados-anuais-by-user/${userId}/${ano}`)
+  }
+
 }
