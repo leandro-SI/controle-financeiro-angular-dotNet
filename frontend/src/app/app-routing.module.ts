@@ -80,7 +80,7 @@ const routes: Routes = [
       {
         path: 'dashboard/index', component: IndexComponent
       },
-
+      { path: '', redirectTo: 'dashboard/index', pathMatch: 'full' },
     ]
   },
   {

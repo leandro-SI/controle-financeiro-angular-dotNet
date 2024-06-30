@@ -35,6 +35,7 @@ export class IndexComponent implements OnInit {
   constructor(private dashboardService: DashboardService) { }
 
   ngOnInit() {
+    console.log('Ano atual: ', this.anoAtual)
     this.dashboardService.getCards(this.usuarioId).subscribe(result => {
       console.log('Result Cards: ', result)
       this.qtdCartoes = result.qtdCartoes;
@@ -56,7 +57,7 @@ export class IndexComponent implements OnInit {
         {
           data: this.RetornarValoresGanhos(result.meses, result.ganhos),
           label: 'Ganho de R$',
-          fill: true,
+          fill: false,
           borderColor: '#27ae60',
           backgroundColor: '#27ae60',
           pointBackgroundColor: '#27ae60',
@@ -67,7 +68,7 @@ export class IndexComponent implements OnInit {
         {
           data: this.RetornarValoresDespesas(result.meses, result.despesas),
           label: 'Despesa de R$',
-          fill: true,
+          fill: false,
           borderColor: '#c0392b',
           backgroundColor: '#c0392b',
           pointBackgroundColor: '#c0392b',
@@ -113,7 +114,7 @@ export class IndexComponent implements OnInit {
 
     while(indiceMeses <= qtdMeses - 1) {
       if (indiceGanhos <= qtdGanhos - 1) {
-        if (dadosGanhos[indiceGanhos].mesId == dadosMeses[indiceMeses].mesId) {
+        if (dadosGanhos[indiceGanhos].mesId === dadosMeses[indiceMeses].mesId) {
           valores.push(dadosGanhos[indiceGanhos].valores);
           indiceGanhos = indiceGanhos + 1;
           indiceMeses = indiceMeses + 1;
@@ -125,9 +126,8 @@ export class IndexComponent implements OnInit {
         valores.push(0)
         indiceMeses = indiceMeses + 1;
       }
-
-      return valores;
     }
+    return valores;
   }
 
   RetornarValoresDespesas(dadosMeses: any, dadosDespesas: any) : number[] {
@@ -151,9 +151,8 @@ export class IndexComponent implements OnInit {
         valores.push(0)
         indiceMeses = indiceMeses + 1;
       }
-
-      return valores;
     }
+    return valores;
   }
 
   CarregarDados(anoSelecionado: number) : void {
@@ -164,7 +163,7 @@ export class IndexComponent implements OnInit {
         {
           data: this.RetornarValoresGanhos(result.meses, result.ganhos),
           label: 'Ganho de R$',
-          fill: true,
+          fill: false,
           borderColor: '#27ae60',
           backgroundColor: '#27ae60',
           pointBackgroundColor: '#27ae60',
@@ -175,7 +174,7 @@ export class IndexComponent implements OnInit {
         {
           data: this.RetornarValoresDespesas(result.meses, result.despesas),
           label: 'Despesa de R$',
-          fill: true,
+          fill: false,
           borderColor: '#c0392b',
           backgroundColor: '#c0392b',
           pointBackgroundColor: '#c0392b',

@@ -12,13 +12,6 @@
       </div>
 
       <div>
-        <mat-list-item [routerLink]="['/usuarios/editar']" >
-          <mat-icon>admin_panel_settings</mat-icon> Minhas Informações
-        </mat-list-item>
-        <mat-divider></mat-divider>
-      </div>
-
-      <div>
         <mat-list-item [routerLink]="['/cartoes/listar']" >
           <mat-icon>credit_card</mat-icon> Cartões
         </mat-list-item>
@@ -49,6 +42,13 @@
       <div *ngIf="isAdministrador">
         <mat-list-item [routerLink]="['/funcoes/listar']" >
           <mat-icon>supervised_user_circle</mat-icon> Funções
+        </mat-list-item>
+        <mat-divider></mat-divider>
+      </div>
+
+      <div>
+        <mat-list-item [routerLink]="['/usuarios/editar']" >
+          <mat-icon>admin_panel_settings</mat-icon> Minhas Informações
         </mat-list-item>
         <mat-divider></mat-divider>
       </div>
