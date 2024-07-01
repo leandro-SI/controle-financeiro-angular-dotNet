@@ -38,7 +38,7 @@ Back-end (.NET)
 
 1. Clone o repositório:
 ```
-- git clone https://github.com/seu-usuario/sistema-controle-financeiro.git
+- git clone https://github.com/leandro-SI/controle-financeiro-angular-dotNet.git
 ```
 
 2. Instale as dependências do front-end:
